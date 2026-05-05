@@ -1,11 +1,12 @@
 {
-  "generatedAt": "2026-05-05T13:05:10.543Z",
+  "generatedAt": "2026-05-05T19:14:23.775Z",
   "site": {
     "title": "Nyakana Family Tree",
     "eyebrow": "Family tree",
     "description": "Browse the Nyakana family tree, search the records, and contact the stewards with corrections or branch updates.",
     "contactEmail": "nyakanatree@gmail.com",
     "treeLabel": "Family branch",
+    "stewardUrl": "./steward",
     "unlockTitle": "Open the Nyakana family tree",
     "unlockDescription": "This version contains the full family tree and needs a valid family access code before the records can be viewed.",
     "unlockHint": "Use a steward-issued code to open the tree.",
@@ -13,10 +14,36 @@
   },
   "publication": {
     "mode": "family-open",
-    "sourceGeneratedAt": "2026-05-05T13:05:09.943Z",
+    "sourceGeneratedAt": "2026-05-05T19:14:23.229Z",
     "visibleRecordCount": 40,
     "featuredRecordId": "i500003",
     "defaultSelectedId": "i500003"
+  },
+  "stewardStudio": {
+    "enabled": true,
+    "repo": {
+      "owner": "nyacly",
+      "name": "nyakana-family-tree",
+      "branch": "main",
+      "dataPath": "data/tree.json"
+    },
+    "stewards": [
+      {
+        "name": "Cnyakana",
+        "salt": "family-canopy:cnyakana",
+        "codeHash": "0d729efe60208d1a43f8eb77678ba32f43224f565a10cbd85ca566261ad948b5"
+      },
+      {
+        "name": "Nyacly",
+        "salt": "family-canopy:nyacly",
+        "codeHash": "78d2d003c66873b32a3bbe11355a6f4f7b10bd621ad745dc98eb91fcf6d26b40"
+      },
+      {
+        "name": "Ronald Nyakana",
+        "salt": "family-canopy:ronald-nyakana",
+        "codeHash": "7e3b62cf3938741b2fcbe33d1fc365fb9f039095f2d7457e6b334ba2f23f07ba"
+      }
+    ]
   },
   "records": [
     {

@@ -30,6 +30,8 @@ body {
 
 button,
 input,
+textarea,
+select,
 a {
   font: inherit;
 }
@@ -403,6 +405,102 @@ button {
   color: var(--ink);
 }
 
+.unlock-form select,
+.online-person-form input,
+.online-person-form textarea,
+.online-person-form select {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+}
+
+.unlock-form select {
+  min-height: 56px;
+  padding: 0 18px;
+}
+
+.steward-hero h1 {
+  max-width: 13ch;
+}
+
+.steward-status {
+  margin: 0 0 20px;
+  padding: 14px 16px;
+  border: 1px solid rgba(32, 54, 45, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.72);
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink);
+}
+
+.steward-status.is-error {
+  border-color: rgba(147, 70, 59, 0.26);
+  color: #93463b;
+}
+
+.steward-editor-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+  gap: 22px;
+  align-items: start;
+}
+
+.steward-panel {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: rgba(255, 255, 255, 0.58);
+  box-shadow: var(--shadow);
+}
+
+.steward-panel h2 {
+  margin: 8px 0 18px;
+  font-size: clamp(1.8rem, 3.4vw, 3rem);
+  line-height: 1;
+}
+
+.steward-panel-wide {
+  grid-column: 1 / -1;
+}
+
+.online-person-form {
+  display: grid;
+  gap: 14px;
+}
+
+.online-person-form label {
+  display: grid;
+  gap: 8px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+}
+
+.online-person-form input,
+.online-person-form textarea,
+.online-person-form select {
+  padding: 13px 14px;
+}
+
+.online-person-form select[multiple] {
+  min-height: 150px;
+}
+
+.form-two-up {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.steward-search {
+  margin: 16px 0;
+}
+
+.steward-record-list {
+  max-height: 560px;
+}
+
 .unlock-error {
   margin: 14px 0 0;
   font-family: Arial, Helvetica, sans-serif;
@@ -416,7 +514,8 @@ button {
   }
 
   .hero,
-  .workspace {
+  .workspace,
+  .steward-editor-grid {
     grid-template-columns: 1fr;
   }
 
@@ -473,6 +572,10 @@ button {
   .unlock-card {
     padding: 22px;
     border-radius: 24px;
+  }
+
+  .form-two-up {
+    grid-template-columns: 1fr;
   }
 
   .rail,

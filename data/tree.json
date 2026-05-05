@@ -1,41 +1,1051 @@
 {
-  "generatedAt": "2026-05-05T12:41:22.634Z",
+  "generatedAt": "2026-05-05T13:05:10.543Z",
   "site": {
     "title": "Nyakana Family Tree",
-    "eyebrow": "Protected family tree",
-    "description": "Enter your family access code to open the full Nyakana family tree, search the records, and trace branches in context.",
+    "eyebrow": "Family tree",
+    "description": "Browse the Nyakana family tree, search the records, and contact the stewards with corrections or branch updates.",
     "contactEmail": "nyakanatree@gmail.com",
     "treeLabel": "Family branch",
     "unlockTitle": "Open the Nyakana family tree",
     "unlockDescription": "This version contains the full family tree and needs a valid family access code before the records can be viewed.",
-    "unlockHint": "Use a steward-issued code to open the tree."
+    "unlockHint": "Use a steward-issued code to open the tree.",
+    "contributionUrl": ""
   },
   "publication": {
-    "mode": "family-protected",
-    "sourceGeneratedAt": "2026-05-05T12:41:22.031Z",
+    "mode": "family-open",
+    "sourceGeneratedAt": "2026-05-05T13:05:09.943Z",
     "visibleRecordCount": 40,
     "featuredRecordId": "i500003",
-    "defaultSelectedId": "i500003",
-    "codeProtected": true,
-    "accessCodeCount": 1
+    "defaultSelectedId": "i500003"
   },
-  "protectedData": {
-    "algorithm": "aes-256-gcm",
-    "kdf": "pbkdf2-sha256",
-    "iterations": 210000,
-    "payloadIv": "9eU623eLxKxe4JFg",
-    "payloadCiphertext": "Rhg4fi_ogXuqID8DtW5zNaFgTgLL8695y0RFC07Ag7B2lLP8Ldmmh-HOOzmRNLsW7eVCwqV0CLNfPbD6IrjS7QfSlPMs_pLzWRrhpncPmeSmw1nEquniHt8iD4uzONrqUs02g3FD4TUoUmm4kZ8DkwiJE6SDpBmmlXCWzRIhGLTKs4NNCPPTNWW8KQcGYgrNhaQWtuhx137N11hVV1ZGHCqv4OHy2lE578zzRgOaf3CjALil3UP6pJCwJ_6X0K4HGwoF4GYJ4Srg97zVQsfidB2OJaF6qBU7R0HLnsCo7aEq1ftL6WrWu-SVpPfLjoUnGiF6a-bd5Ydvti6tdMXpO8I_OkScYdWVhPTiJsmN9guT4KClH7nf8cA1JEFua0BQnjEeqTfTZR796xYu3WqRoQaSi3X8v-nGUbJMLeUSNu6dr-Q9YVUpAv37-L2iXC7j3dhgoYeYoJdoSv7Di41SYBFG7pBYhxk5jcgMyFF-ZgJ6q6HPGFLwo5jRYZhJde7wWXeoB0_8zyjieYOsHG-6DWVAIGb2SGuEyPsLW8a6sWVcr7zIgfHnVkeBsTCpydooaTekcQbK8fLWqi3RXIs7lE65gpc8nQK0ungiFxFiTytj9ictp0dsmsLXqr2N7wshzQ5MeZitQVigdB_zhVoP-ebUAd3QxbCN8iv3gPJT3WByEYQRqKQiSi5YKqQZ7gH5txwKCFiITxgCNj43iOLVAP3q-bm_PXeKfUy21ND-WGUNabh7uKHTN-r_ykdz75G6BEFsYs9TRgN1KUoyQmNO5WwBtQAITKwSHy8VFDpTbTbhTO9BB50z1cWst7nyLfJtQo5HeiQyej0dLPOCcay1pkz_yRWlEIdk0s4kiXjgATuSTUIAOcfPRyqyYaqf-3vpjMuk48CefxspUgsyMV3WhDQrADjaN2pMN_kMXP_S_a_eD0xwo0dAW6pUOQDD4wRn08OhwthcsEruhIm4DZ_5yvTuB6GaAr2cFByTNcSsd5bHsH_yLjIu3wjN0p8Y4yEAkOdqvBoKtiOIKyaXVtcse5f1saeGWZDCjiyMqfuqEHpALJSTbSTLVDP7IqAlf6_n4S6tSJuOtJKnL4y-LUi9cbpkjqauWYNQXNX_muugE_1JPurv8TAFktDYH1P5-Is2LjBvc-SG8UK2SQE18T1o6Ex2l-k0jy6cOmjN_ygDl5zplj2H49ch2n4N8OFowQZWz4sNuGaqHEObwx-1CI9BShIkZy45Dpw4WGj8pR12DBG_c-V_o8Fa0K0GPBnC_ssjtq_Hmxbmv1E_ck5FrCJhS9GZ2zgboSAo3UlrTNVUJi2OqBKXVI-pwJO4Mkcv1b3jXO9hPs6ehuaRP7xaZDeZ5FA2z1nvsm-xOzRSNqh-GMEEfGyS1Bt2yL99h7RhSveNaRnWg2MtxZdZ8E6SIKB0mqL2fa9qbS4UrLbKCOgyctiAGlrSjqGNRUj80DPnz07aj80Ygh0jlPm9RhbSBG4Msot5PuqHO__Ch6bii9pPnt12HdII5bZ47YK_AxW9lGdSHthZaURoF76G8yRCvp80n62PPzaP13KonpxiJlF6Sb_Kk9QTS9578WxkSJEe-8yJB9wY7xsWl9lOvRVYcVQ8KtsKe5wC8UNM__B4RBJAwu--fvjVaZ3w-BfmP7k2_TftjrDcxf7Okqa4WQ0ADrZzepLxnkU_UMmrP94Ayw5SqZA7ius0m4TxnUSjhJdRbQBWzaVq7SAncCaCOYF2XLK8U0u_l8BAknPeHa6A0JwrUIuQWuk8aLzRS7Rwu6k9aDM8AqvsqgF1iK24rIgmvP2AICoP3RogvUWwoxkXY2b3Isx1qd3WWanbIFufR-RrrhblRUQ4abg7IA4sxD-BMuQTDbu5e0-yQGCwLq7AqOjrJ1idUh13Lvm5_vVf0d3hbhwbv3kV9UIIkg5ZHcQ24EtLgQhODGK9AiJ37Ahqaw1WsE6A3VF9Qyr7od5xrWvUSDJH8C0wsGRFnfzTy9zdwLSk-1VVn2SD7Dspt6wSa7j0HmKuaRy1Pn4aCjfYsGwhEbAROJRJWdpAlJ0edspmQip6u-lgCn_AEhSuDYIK54xOhqWUlDK97hx8Xr0G3C91Fdd7RU7n-MhGnLKHnoFmF3WLManEp2rlw1uMUnutaI4lOow4Q1XLrYmpl_st2s2Kv-tcuHtXqJjttu7eQj720GFpBJfFZXi3zo_QY4QdGAcdTi-AM0JZkLTzw5YgzcNX1v4bxIt03AWEh31FJ0lTe9xVSqA9gfDdJ1km0l8ifF72JqfzLHSNmpIl2Z1g8Kh2JnBt6WB3i9I2zBAXETWGqXh8UqMgHfYPJDR1a7es0jlUZ5o4LfQ7dA_6pLfVE3Ho3CTKY2hINLj4ikx7gVcc8PptGtf9_xr7RVhGkRW1ADhAG91rTWpO37f_zOlX_YpcKMIFU_7F2y1hHHWiZ7YB_dB0vJ6IvedOhZDtbUHExOQrC__iWJN2IkpIt1i3EQ_KaramcrhfwHoWzL15mP4rUgr2T-YwGwSA7ioergeJgj9e14VqUWl1IkV3RVtHmCv1H-vzaxkoZL_iOxHi6M25xW8IdR2x1fXnDYZYFUq9Zhy-ZJzFNFJ1sVrdTQxL_TFZzkklstt0c5O9vE5i48BAZAQLlQM-fs0xSq720w1khQXYSlViz3tz1SJQkA3M7g_hlqHaqi1rVNXAdfEI--ORBIYzcfZrQ-qfzgPHdM83fgqUc3i9JS8DXxSDvCfhvM5Oy4Jfuh68FRGQpaMUzDNaE_R482KSM7EGa2_aNkJAy9IXfGP8z5oC-TEE2R8upOUva-Z9eElAmKjGaTxW9jHhjG59-2BT4KVdjMrk_LGt9Df_l8WdtHJc2RwfMC_Q7j0_E2k3VhY1iREb7dM_XOhXiLROiG8QV8OECDacDxCMY_cNUsmX3dfjQ-0wpSpuahBfVNWTnYVR9EfbfGix9LIyYclylTLXtLC6kDTt45GEvyU62XJTHufC1_uyrkoCtfvFXenveJXjQOZdsoI1t2xrPS6HyQ1siQncNqpCl50icN-0XQ-_gHe_ktK9d0hYF2-lH1O1auOzwtBHIcDE-zDDUDDDLViNI9t9AgPWvh-GhqYSn5YhcjpGZTUVfPjjRdYVfiiGSPOkmpJpu8PZh-XyiCT__802DfuhZUxPIrdEFotC7RfYL0pF-W1IMADUbuAIIZup8Tdt40ajB9rn7OsI9NfnqwuWow-1jZxVY1OKviuWI65Ev7p1MvKPWUTZ7BBK9lPkURRy_jHr94EQ80dCWecVUvkskdrISPnotzAdxmHHPIsgcRmu9ymeW9EjFYk82a359wcpGNlMLE6hEc9l1hjZh5huMjg9wUd3ul-43ehSodSG_-gHsHAZIOzAsCNXhtYSoZPyjJvzp3ch61021t7tUbCOs0DjZ2v5PrJngr5YJvMAYhc-rcCyNqEuLPBWIry6XzIJrlRxOW4H0TPFvUPhjqhBJN7x5AfHzqrf6Mf8a3fj4f8oa-jM_pqyPO7L8Mm88c84DKC_QxHp9J1qHtG0a71j2S121QmFY_MekIM9LrYsmsd3lIFTzhJ09uTHTrdTcE1PLWxANE1VLMm4K2SrOzWmb_Zkwp9k9lEAORVegRwGkmrU3zqFa_zOVJ2P9pornuCdNGIExHqzAc3mnt2p0m3B_iaRES-7tNEYHmvhH0M0EolX-YaPHn81hCGPMejQcgvD7Vod_eD7lQ7iYqeNjx4gq9zCgmpF8Wi66e1BefkpFj-Pn-0xRW7bbEuFZSIzNgouSwTkeL59AQ0Qy4HKqeupWaPVjZ--pKj6SQa7fig28QenhRwiFQcwHXdnMf9f88OYUe1CMgXzM7eT2eROES9FiD8lbj_GW1jd44z8RM3zQlmCBpVNoerj7Lf94fH7Me2Up90Q6e7nd76Z3TeVsf6KYFle2lCpdk52Q9TWeaW14eusXynFmHaSDJkjZVa8bHnsi-t_xdGvMRaI3Qg1-2Cw38WFM9KFvH7foAwlqAdSDFc9uihUFpL8HbsUC6iw1MqNzajXj3vriq5J5DhR_HlFXbzo-7_7Lwusf60R0lwr2vVnqlLyFJmg8d_Pmv70XB2ezK9qnWj923ezD5WaLW5_zni_C--vWFWNmicKuuM50E_ohHcT_6DXXQaPSBKiGcEZrYolA5P9-oZdWTThKXR5gyUuqcEFBexY6g-eKFtg7OZxe4BjTn1FaJ1yH1-pwIs4tKU4RU6z8Y8TxF0O-J3tz4oNEYtu7FauUEvADN2y3CtFysKHEES2v4I0idKciCnXoHb6RZpKCouvW-ujbnNHhi0srkKP6_maXBTPgkOnrdCUM1gUh6LRUXo4syPek-SWlFjaOVi0Gh64Nm_5s6BGFPF4zUAhwB0xbSktBmBWMQiHURey_lY5_xcIbog6eoGG_VkKAw5CIDbiKRk8T2dLz4EUlW3LXyEw5ls_0Sc2BzGKLR9el7YlDQx6S5IOAoqca4ixd2Y6EQYmiU70l1zeLYrlvY4thwmws3IrgMps2E85-fJZyuD5xjLcZ5d_FbnrOeQVo7v63GsHhSvCjyzBxAb7guaxq2s367S_jksDa7gipjLD-Y4JRUM9bTfROzK3Q9ISp2ILqOmdDBNKSAAuOEJJrJhO-sAiwXWebsGwwV64XDow8JNi1IW6ThqYa5xw7KhIqYJrARkRosRYIN3rUsgs2S1U-WyGlKQqFqLL2znkDe7F4s39QoF8FBiVbXIH-dOwe0ah-ZEvnUJoaoxZeoRFtruYJAB9qZGcX-a2oDaI6SHbHktek9yCp6GTZltdfKmOKeqjq71CobEmiKuY9rZoqIv76PFJtPWi5svf9OlDIhkMopRU6tttfH8-VcHg4-z1_DuWDQBPsR-8waEKJ6omHYwidFkOfHnu_w4BpeceHYquInUvGHqR8fuLUpo1rVkI5zEflB2mfvlQfhMVYOKkuYEygH6M2G2te4ZvvLXkM6X_69nxvzaPnu2uKwlNwJlv7isi1FPw5YuOb97OioiPFr4KlbQ-bSrVbT9NzeLBHs0Au6drEq7eKCbl8UHgJGrATeTqRUN2JF4022Rsuih5YnGmO0iH2bWVrljnV6tf_qz9oTCiQIQWbqOwJ-eHNq0pMmT2WncRRyjA54oyYIl8VrIlARl3mEW9r0AffJK0x1wlO8J4hlcvfZaZvKps4HMpoRnCLzaHMwskLMNsQ7A_ySD80Ut4ZDEHdPVuIiEpnbEoCBMv69mgtcz_TWZx_x0684LQC150epYZ3t3wDwZu_LTXLB0AslpJaPenS0ID-lNwn4U7vqN7LOBLzch8ubo8xFTzF7tHD2NH1gVJuofcc6L-_HxeSREgtN4yjPvTbbMpXX3k_J9xn4NlAs24fvF0x3Z35-kDmLj5bFTw2D-t7ZvGqlUBcEOES1VBqu1jeUc5XB3I-cs-Ut3zj4zQdY0M5sevP7CdRkAqgIOKxdF-0KJh-HkJhj-UVpusfr4N_qBgullBmPklmrZ50zTh9K4Dl3YcCKu8P0uF2k60PIQHl-nPDxCa5NKsIDcjsTG5LKaS0MVxIPDQuAusSjR1UIiccgDdzzs-5N7bWT3FYd722-R4zRQqbAitGBqNJYi7xUOBn30DgIJbJzbRAkfQtncpkMy3sLtrWwl0rHgJGAqEM8vDgf06cgyECW9nwvQMM80EjQr3ER4OpHWIMfQtSXcgIneg_Trl53LcToIs9I14r6fLl8GPX6LiJcRIJEo6KUUFUZ619xQV0hPj7sn1m-SevC39-4QJGVw7NkMKZNWI4L8-RnbqI250AiPHk7YHUqIX-yJbYcJtJ0lmUEBCbQAH7vyHfSLhBUFxTH0d4BNspYFXamOzmuMZ4koMTnAeI-p6KnvXFlmOnp0xzMmNlt36KteQSZ3Doe840NSBbvrHG2AawekBKc3L88diz7w6M8AwGgHNIARHJL4ucCjfiTPGF8X9NSc1f548nZTNFaHNElIfGPYxUwqJu91PZSxMLIiLLlJYNbiSaB6zfsfAcFRFZAvOe_uY5IuMX0ap58dIb7wXFbUA3Aba0PFjZWisKfQoryLz83Cl5gtH0gtZYFYR9wsB6LtSaqeMFlQa3frvRrtEIZRxNnYv_kOBPlYSW9avYwhPmfSTyNNJPibx2B_vTp1XyqughFZweoUpCUCa1pbf-5Hf6kpYnN8yueWpuSsVuzmbuHXegC75FCw5qXGfMbCpnlZFRBpXA6B6kRVsdemWy0uE3e1K7J8qg5_hZPYbOEkf66fa8JpzgIQtAbVLqBfBfT4JVN1gcyF0UrGCOw7FPCJ1dZoV0VWc3ZVY4n6hdSn-33Wm7ZHd8Zz6IjuWxM75p8h1soaXCL48BfjkLsMAAUiZKQSHVUcTKW5h6QE89gRVg4gN3hQWS-GZkDxzmvX5Jbf2OqYAEYlZaLXYuIOpzb7CkKaglkHnbIDsg9-pwSde3jR2WwkYrRTs8EduQiacOUC_ohCWmMwDx_Fa9c62oMlLGS83VJfFd-jfyO6qGYtZx0mL0QNfw_IQmoPvrVZQJZl50Xo96znaCA9_PJUbeChKRZrYFXDVGVGOqUpARSe9nYC-v_qDFwOSH-7g5gYuHuaDVD4Em0u45nTMx9sriYodpBaW0RF5bsbnpF_oaAD_z_5Fy0HkbnJfg1nwJJ6XOAgbsVz7LxUBPXZUtbvBMZQAtnjAH2RyhL84BqHV-ele8vn1UhMeYbhp9XRu5BBTrzAWO1Wlhf_vWabXFPPye0IlzldzhDG0OIMOJIZWJgqJognAErxa4k4OcJOZ8NTxyQXEqLDgBibO5liUcJe0ONK6D3uBbdU1I3ah7vw-pgFTO17Qxe9AbO53wAZOPdCf6ftVSJhdm8UNivRjUksBhmjTUohs7Nr4t0NbXPOu1JwmDDD3raaG1H_bR6VGF1crDrckBq5cLRXe_vK7TvmMBNM0j86WkEH9dwr0dK4Y7epb17-a7fgQsdLgs4VsdFq8ogfNoAgbVxcgqmAfPYWc6_ZVTQSYq3ppwyq3jbxltlYctbuhDQhCTfeJTG3qNiHEykersscr_uMXvO8H4v2hW2jKMebx5v-1KFUm2lnZX1ZJdltG3KLMZxYgP23ahfboqQCUFf3hQeiX8pC-MI5AW17w0ucJJ8h-xntjnD5gcJAQs6vyiz70br8lWCyS-bED-Tvztc4a4tg13Pw16L37ifoeIcAkMEn6LMftCBj33gXjpDbiBwonpo6GQBEHk9UwLmNSBY0_i7EF-EB-rApEJtvfHFurzGlWhlZi8h5JODRx9_2vndNHbx8mpqI1ivQ81FvIR52TifAYZEpjy3q0nag9M6o4TDogD3S2RsOAkA6RhsIxG7xOOtCz1w7h4QIqmPT2Jlrd-7HtSTlRgc7PR1eQ7L7sevHHeFXzc8WLHRjLskVkDtr6pQBSicGYmRi1NhT5dytNnTNaj7I8UheodpF2o3yamwhGsafqMPzYlM2c0SqIwkhfRHHWgQKzw2Oxbht890SPvuo7hq7uyJgbHs69T0cflKn_B8_WpLMOHhtqZ5TCwAIALli9CYnWvyDKInyxB90DwUaEO2bJyWI8PdwYcJxFYdHkp54avs-qTxJJjb0B_RbDR-cHnk0OqKs0Ju11Ljii0xJuwSM714wsGljniX6_Cr905mD-P2jqTwA3MGGBDkAh_XV5MWPDSZPqH0bSRm-8t8wKThIOeuzLotjb1XkUD25l0St1JngpecKRQZtT5FlGlcqRx6xC2XH7a1-YjliA057V9iYBgg03QHp7nxksmv8lzUEoSSvHPRFTAy-CJPU1f6QNtSf_L2TZ6tQd601bTMAOLGDbMSNpaiFXjnRTkEjxuKmstlGqKdfnVcnWC9bH5HPUkGFcy3GydjkaGLq9GdfJlS_aMqnRTjrt9rtkXbcoNvOWsH7LIzrfa2XK1fJJUC7DVnovEnrnU9gXEntmZxgfvuZGtsqEPmflAa6SrrVs9BE73I4Y9o37FxPONmw6GUTarlUWvt0jSpNHf6__S8rxvw6vEsGeP4ebXIsnzaWIGSXzJ_raGBAouXZEtqap2-nWt2-C1ulO-mIi3G3fmHE7LeGSYFo2r-7Op0V4rJOzbS2wZTzgr-GDLXDWOwYDc3-RuLhr6tRryM_1YjNRv0vDsIo7bQsrRD_nMWXZd3VUXVe_YQFFwGu1aeD8gXFA4_5C3kTXSEvphs6BhatyNB3UlnVL74v0LxAcBr_sBBV9Nucpnokpby0F_FfLvJ5fFZpsHIvPPXrqdtJaDCkAd5J4aHYDwualEf6Syet7Cu392cBJnpd8VOYo4u_7Ih1COPxAgOvngmcRxSs6XcgBDbWVF_DxCbh0Vp6tfIu9uVaZUqqu6huO3LZP0ksARBQdZeX6OxZYVu4Z1GCroUI-37XgWCvk5JgGymoW-1ue5G3W3qIObKMQFxH157pfRbm2gRitX4yCBnTFLupvm8O4aNMlpmVVYHXst8VoQ504ZrBAjj_KhZfnyIH8iJAVDR24cX-KNy-G6LiuH3MYbw7cYsApqj5J74QfiNeVP4zrREvPPmLeoTpIvUsJF5cP2Fa0MBGL9cdwqF8sc87IQd1wWtG62jmqM6SPLbzwCJPcWqvZqvBqTk0_NEc2MJLuuBfNYiN6xNJfiTU7yaeNgDejN1CHCBZQ3eGdVWuN9dsrsKGIxre02oKHCrzIwkPtPJcwL__DMOdB5GtAUy55XgIVertvePP8iJYaZhAWxfVLhkRAC6S6qdv8ljJKLImakY389FonY77AcDlfpwxvJNELVamiPLSfi4Ze4imsDtPkK_Ux6S73LMz4hgVr22gP0CvBl1KpLQhuShoo0mL6Odbxe34uVfoIJkyLPQlH_KITVRdUxTupqslmYJC_UFVSiCFwwKxxeHXkbfiutMs63uoPw00JJvUHwEvB9hsBMCZY4kDR5JFmaXJKp3dV9HgXEKqa5_JgC8eRgh7mVKNmS--j8PBqoA0bL2W-OpPYL4txxQo9qi8kmCZDUYNIWJXBXmZABr-cYILmpad0Dfk9SirvZBHvj6tkafPwOiF9tUEvdj9m_fIsJPFpe14JRtRUWx787iyFqAF3Z6hzwCmPaH4iWMCSp6aSGiiM1I9wd3YRdMVMdS-Rkjum92iWsBISifRd8SmpeKHMXV1waqKkbF-9ulxzXQSYMRy-ME5vDhkeXUV9_XNwtDpx4NmZdkj-OhrYiJk_y06oKY2ioZPB81yUHNNNQyJ2cjj8FjcJYBpaBd4xD87BVMAKDeMhMOevCbvRj1OokqP5GPUwH1E9HNzSfFm8vTXdnPfLv9o77oY8BUZ7cvQr_L52FygNgm4U6zbm5pWoMaDezHQON9pPUJrZK-ksQHLxdc_8txwTWmCiL57AIgbwbu1a2nu3h1CQKYB_GUe4Au_eDeqrmRoCWyVtZb-Icp-WA01fJSaadQKDwsZhKoDeY_Z8tUJF00HZC20kJOW5LZxhq4Y-F-czQo32KLt8XvCZ4YExAhpdxk_mCscJ6T777U2oySG9pPiv_Zyr1l344z1IdRgiNEBM5BucbIYGQb1Y_YxTis3_dwKTCtTtZoxbioteCX-i6Q_dTOSF23hD3VvzQytA1x0_jFItyNzhW9u7DqwUmoYfL_jZ3qEVVBb0DhFgizCWeQ3b7sjTuLyNFyhJpycCieWPZ4W7MWrYcZsKQ4ICLEkdP8jm43YizCcne4QlH8AlMTP2x5SrGtad5VXIgjcOUacQ7pYwvJjQ2EXtMErND4_ot8JmNtAzP2ZbdgllO2iQwOmb7UuHV4o-LeaX6Gj9CcjbENjlKEF6xALJ-B0vqT1OUm2L_HMbgcEP3xUKvZNpfudS3h1gWNQ-AkHECHBTcoQnU1Ej2oqzhG_pBcmWu2BbTV9LClTp_gjF66u70iwZSxVioIuBGEs9VnmO68OHCKLfjMegpfnhP2zSsaLgoHoOydK-ZCC-2E28MS-Ie6YSqM52-gVKhKRKqSpUl6N1FQZqfRiVtMqADw2VAi72ZrjlyGlHIgsRqw65fUyAGDHsKVrDdB5igrKYwe8UJvB-EEJhjudl90EX4-KTcLhwvyT_KR04DIQnmE7aZl_x2zf16qgSZakiGpu25_mbO79EO1SivY1oNq22yrDM8YTtlUE_nYVIFOoBtIexfKZhPSgsbdK7w8BXSacJL3v0yune7fsWiUAWllVN8ILiRjF9MbhMcmv2l84DnOL8JyUqQGGOrHXOZn3HIiNS9yNl9pHFztYq7GY4Ra0eS5c5-V-3ooaztBmG-0jA53Js8_CMumc_1AGxPtS11gUSefdgkQKnSpc12_ly-TWvqwnq38GghZUpdyI7alT8XrPIb2ySZ9wbyHQFbwh5Ojc-EQXzB3VWDQpyTkx__9JJ7quSBkDKabDBOAm_3mpQzc67QHKeQfgO0yTG59fQxTYaWyEU_WbZHXC1RTPpO-8kcG5wTqAnsZNrsucA6hmPX6CJpsXRgCbiETmK6sTpz9j2X277HOBZPCSYFBIdZyKhs96u9hVKAxLbfW2OQUOGj3V8wRs1eNkRAPa4EnmuTuEJMDDW_yweuPJmQ6x8VuieJrtiBiTubAPJ4exSIk8IjXNmLHD-FGULrTyMf0sw4I8MuV9x79gV-E5XeVlmwEaEzA5e26-zsL1ZBx7NG1rx6LAz2q-xCMfe_4UMsHRoAnKGGq0kAKlgVoq1aI6__NL9fToZRh2YScyxOxlhwoxCk0K_dRVLEXi_3CT22aBjzdYojwJtfVsWhpYkc5ALtk3zr-6ugfJMpw4NFVvkGHE8NR8xEUloNVmXvWS_2Vy-EaJaHdcQdaq5k_XP3aatYr33JHApxtGQIM5IA55oipNHP_GPzecTAvjshQs4ohTL2vFvIZ0IKevrt48-2BGsr-hu_riSWUX4MY45K3shNaewWY8GhW7b0t1eqYzWbDHN6Gg7jf80uEJJIM1ZKoLOPk5YQp7MAshQq1q9fwuGGc2BV9ma8Oe4b-QuUI2lEr_3dqynpMRVra2bx4Yh3z_W2bDE3Bsy4559jFWOj91C_i08hib8-4VB0DyvvGKS_QHYfJLAoK59AHB33j8erY0JqAi7_cWv73Skw6U2lOM4_oLXeRDAFLrzmHlO2_OZxhwGBZL9jWfwncMo1o28fSlzH9AdBXE39wJ5O65_ToWxN9HLqJxV33n4nJhc0ibA3S7ofvlpcC-Lbkw4X3zL6KMtmegnWGNuh4JKUyXhgHaU3jlKhmxU3aYiX5Y5pPRxahhCnk5N6o9pp2OJCxqw03VTwLcAibJCWs6d65kkNnC5cjSkqc6QBpL6Cd-MiGmkXW0S-bWw0yiopM39_mHn9810VZrvxZ5o0h8_tanManwcaIyJzi9a7USRiuaHHdI2MpHrMfHn8Y86WM2yRP7_793XWnbCf9uiZoI0ZgrAmS9hW-3Fns6Xf-CGdQY36brgRO7QGImM_AT4GZYnMiRA4lsegVSg04pznOhUg3RGImEKn_AKMV1E3yjUHoPyzGdEfKlKe7ZxYEEi_xa38-Ms7PF4Q2fFhvyk95gaoxiNe6pVl55cGL3THhofMBgjTBDNH-jDbzzWEe7eU_MZ9v_XjeCfAUPSa6QF9tDAjL2PviXJvrirNBQoRq0gGT0tokJ0vwXOTE8PUEF9qQgSeyATrwDvU7TsjvXfYIyU2aHH8N0j7dTmC8I0Kx0seDMdHzZOtCeumewsgQGWWYURFOVDXauKU8Jmu0gVTk2MJoMXQE3ugtbcUom9lNrRhm0mlo10BQdkvdJR_68QEdVEhNdJ7DZwN55wYzo72DW7-Pu8WsLCuH49tJ6b834gZ2SDi3cxeFYnE8o9gOBFodkezafDEAV7wMCufNMemG7Q_Qp7w-8N60EVSjXtinEcfEtAWFYjO5TwnuzlUZFomQIG31nLcNl4E0QvHDcKBVWg5Xe8oQqIorY12yNL6dAiUN7ds-5zxYN6CKhgKhvRguyphAzJWzkaz3dee0weBfNOYF-E0b8cgRiibdntlneE1yBVfppr8EWSGmPsaCGoDtARYh4Lo62TfFjY3NOvkaqIk1AArwK2PVT63vYsGK8E9_ffbkj0HABBHNvgenENYVdgknPln2jD4c5iSwGl6UKPFnPqSE_BnnDWDbkheLcV8hrvgR4f7lzl7VVBVp0iqxGXwUU3sgdN39fdWKpx_0lWpL68s9C4Z6ihVmT8t-OjFQYzAXQPt73HYraVWyhvHA20Ljr36u3faXp9QWKU455wVjVPUdGVY5plHRSuAQzR5i0kckdSH_OcTm_j3e6vVOT1Yby_CBHVF-kMUoRMvkPM1QkV8gNEdY6mDfKEJ5c68URuVPstNqJgTczq93W9rcsKV5xmL8-C_W6s3CLG8rYS4u9yZBX23LchZI89FvuhZtCpt4k6KX7NoCSEAZnHSM0MZHNHgug_TnUmvN2XM2NtSwdUReo4Scy0YQH5X7D7WclfuKQ7KwIFJulTY6lYlnJMI-P1xRqEcrw0w1hOUSzVbhuzfPu7jyD4E8g05FJCgmCT6p6FA1AOz6K-ptosYtT2Fc7RGyvTlqsvDGQw7BDS1yrwxe1RCaKvfHUL1SFl7UYs0lpNvhEzkPfPWXROmVDK_SIuwyIat8-Fm7OJ7StoYBixhLSOK-3uhXhys3ftsk3od7P_aegbOV9Ys8S4v5B7KFY9j5cUg9g2338izfdngxKkqnheZOYYsKQxPVN3eABjbTunM6d07lJVXiZC_1n8ENW7_MJx9F9ViXcbtdMVYHtgCce6SpLtD0Bu6XzqVfxRnYdCh6CHEc9fq6R89IiQdxf8ASXqZgVU4F8OdrZuhVJgJbv_D3Wpzjhh3sHtNIS0hAy4F2ch0ICnkGyZ7m4Dm6fNTyzr9DfQwKtCBc4elwlQFt1JOfUitpLVo3HbzZQd5qb8syJnPwVkQzukQU5NcSw_YTemguW9vUMkAAUM1yBlSGgbYDo5MDihgU3OYGVUtg5YnD35OHCQxZ5YtWXMeF5_sdDod4sSHk1Twiaw9kGQrdZgKbt_wCvXazPG281uj4Kmwt0Fz32FUrXi3nzCpHleV8e8sNzxZFrTkyLHGS3BQMIS26x2Zx3GB5QTX7BxX4vB2PprlJo56XdwwqkN88t3U7p2DZ8CD9RxsTRXEyZCZWYn728JDCwL-Hcd8LSAuLA5yjdSQ4UdzAzlTKpblP748h8WkzW_146n2ycJf4uRzfwHtD2i1j990P1Lce7Ee2eZdR32RI-IjaCtf2Yv8rFpSiek-iPDYPMI61HXyciVMP2KEpA-Ih1TPBEQU29SchvYMOZ8klEDipnS2eaHz09k5OBYpK1S44GI8rrj9XXfkYYAIPDambOLUDIrnK532XWFBba55KUsBbKS2RxnUltRnx9UQ2ueNz4Tz213QkQfGP51F9O57Kfb1LmbTTdYkvEzbaAYYybtzW48zmSQJqfbhvzT3Q4VLfZvwI-ZpW4XWZKzJ4Ju1tTnBuAecOrVH12sCc-u6xdHvIfI9G8Oso5-KY2jYC0bpwft8gmkIGSZpjoKT_AQq7bpwAVpPce3ZrZWgR6yw4WAc86Emp3fWrW1mcp03w8486Vmcb82ZS5h2PbbrOg6I_n45bXw5IBZ_d-iYsFntUo3e-9kDrplRv2eVZXnWLL7AsuiBwm9CF9zw8C_orKbwokc_fHH8-V79FerBgNn_umeA4UvHRlY-gH9rfH66JrH_DimdoGoxqFgg7eXtpWSs04Z3wgvzZ4dlTxrrBlGT47h8LHwaIxqqczr7gVlFdruawIvnMHn3On9-J_gYqIGQQLIHtF3wWFaNcqZ9VE0kGBZLkG8yOv1YHusIyB1mcU-bww0Rm6du3GxgNBCcxPfxQ1mTjXu32gcYxpf24_hI7aDXHHcuyEprGBNqfWcyS_0zv4AwJZZpmahUzuERvS4TNzTOLVnGSKAc3bk7FgiMpqJ5oAcnZjuPa_SfoMMd_nrnntxrYgT3-XFos1GFkD0FnvKpJEm5FNy0ZW5WI11wod6zP6GliHO4a2hKJpbNyvj6Ioxcd1FUMXdpBoxEDYYJDtTDJd47bGnNSwaRbLhgSed3ntwjIObt1dbBUBJUqMZXoGjaH64NfciDxRiyZGAVp6bA7pSGkKa4Pt8I-5-bCVFU4pEOv3ofARJoLT67jhXZ5LGqQqe5tvno5esrxC-Z8z6fLSd5LAEU0uCXVLQP2lcUlLKuPLvww79NFbrSn5xYiGmOy2AG5qDPPVVykp8vJ2eiZKQwfzjObD4PQIBfqeIQ0VV2M5Z5-FA0Tfunt9swKRNl7mCNEtKYPHiUj1HnKquvpVc5DzXQZ7ATSEkgc_BNfYmO9adGqdCaVf_PqV88xeTZRLFsN9ozbSkMrDyIFmLQnrjlU4YK8xQQXxPRlUVgIm-nErFstjyPtf4j38pownPjGtvIxg8860htRssrw81djbD6G3G9OwLbQUhnewSg3lUZeZmIOQ_-uSxGIkUMTJRIoKtadywM7hlJuEKxlvIqA68T6_hr1sx8rA41vg-Uc5-Mh4G_3XpaBOSaxsLu2CztDT0UdXqBXQDFMBrF6spkMXlNhPpc4oTPwIIIY-2dPwkf6tFinRHP1V_GKj7qleDglX-2Qtv-cPZ2nrf_SRuTqJzZ7ra8Kg2FpqEt1PKLVzkPZ4IpOgkHjciGzANo4vr0StdJJddNB0MQU0Hm7heG1Jsepe20lG8ALVLDojhxCi_vQJuSnNnvf-FMpENgojNRn1WASo3CcEYRXs9iAiHp6GCc_QQKYfYZXuCdzCx9ieG7Y1sHcidbxGBcoP52g5xAfIO8fd253lSWl0DfUQSzjkn8uK44MKeDU8bfYeQ8a7HqQ6o-NFMnQheD7JbuGM0sGWyAZJUenyAaxwStGdADLJ4_1fut1eQ3f7cxZu7aA1MVs-nLLpMIspqH7nYiSqrXu6o6M0U8Z-FRJ3isDbBTBMuMC1FeFlBvdV-6nJAnHZk7gsjXAdo5kC55FM2dghPQSmubksdCfRDDgwYPdZJ8KR1rPW4LLR1hH1U9xM1V_-3-yDRfa-ESDnxbW-ArUP1ZqU2FZVz1B_66oK-QY15g5ygdD40eR3cep8MJjjBbikHujG3o8A4tV0kh5ErRbktzn16QNAVFwQfsDBuv-P-_mw89olhQX1QzLVOQ3Aa0_1T4S7C1gS4RfKhuocvHy2MnvsvsmEmbipd4LKhsjsnn_U9qCFxmJOE5xhc76Llak7qUIs2jirmCT7ija37Yc0QN300zmWCLCydAsKPXFMGj_9jZdRMjpX6Ff25kqYXyvwPNCj4Q_qngUJVrfbMwkBB4_2H_zhABENZ_R_3NBWlTIkBRIg_rQ7r0LJu-eBv_pvsqEfB6ljt_Lj3yC8RwRSdo6DeOGdrsDRgQB59c01N9_qYCc8qEpbMVbUqDwLgiLbngqKyroIYiyKfc7rLZgoQKkUZdK8V8hbbvbKsn5VWOnhZ0d8l6bZQXAnP7K_vgjvBsiBHJkh0NJbQHj45m6YbmsPSQHCPN-5AVF6AM4O87ef-p-Cnx4Ym4--82Nf3fExJxyEbubPdG8JAnknLu-7t_49YnplpmIPl_HQ35ZhTGGOnPmWUNsCurKk0N_oSJ2LekfkFPqc9t1OY2O9JtOqH5aHY0Ukc4XFzvYXx_if4Cd5ROQlqPUQLokFrVFX1wIqcEAsfT1LNbaCMJYVhvmq4DhVJu31LKaG9Wc6tR2jWzKHxXuglsjJFUYIVCKIwo_ngMHwgFSC4M70EaAzrNJcvP1kUDyptz98x1f_LM9ZWTK1U_emNnvMAj8vozBL-aHUSQEfa_JfYZ5vzHpV8UCNT0jnQMz5_Srgl6RUSivs2C0RYCfhnLcWRngaqd3Q88g57z47-WrH967otGcKEasVtBbIkBS-1Smp4LGvo3s2Rgv3CvFqfQqylND-QCpYhC4cRu41s4zC7TWl8Al-EGbkoHPBKryDDGLBr_i_gVvQKeN7Pg4uXUsRRa5yAAC1-v29AAQW_8eF_NvNqjxniSiPnKEx0DKDoQl7WoP7Bujhn3GeZgb88WAduWamOpbrXi8Zc_OL9j5ZzxJR3i5D2abx2P4BagC6RPPBdoWFiHMDbb96IgXondn4syADDOxClwO6MHTXb1mBocG041GuURvZsa7DgrApFF2S84pX9AFjviLS4KlmJzGm07YmKH0YDT5Vc7RhF1w3kcmnlJbYoTVuST-efwLd1Iq3A1Y-82DMs7jz3HfXqRSZOO-06rXWHowEtal14KsEW0SQaSjB9I36iZS90eqTv_W0QE7aDk9p3frzlXt-I5KOMBpU-ChnMF2VmYCCtyCBCBEZCcCtqsrPsxWDqzKxm_ty4ZLWBOFWEBvQlc4fC0JKCzdvhGylWyYS6GLifB0UQ5IndkoJueKk8mRMkCZNTHuTNZtdNUO1hGFfQzw2bT3V_0x8Wgzz9Wk-i9xzfijrMO-_SLO5iWaG8hW7kOwi1goTGC1BJIl9Y8mvl7Pa9Q42EigmjtZBtNV4kO0R-at0IIvov2wU8S5jFKJPBaVyCX65BlHpM8OH5OFfF72qENqE2BfdAit6sV7rt7bD5bhNocYifYoW7nupLQf0azfWfB9l0g50bTtWmthtOH4PNmBDmGy2vDo_IR8DatqR_8Lhvj-Z2Qg3GCgRm2DGvdtRWr7BglO2LhG1UhjK0kweS0gbVZb7OIHHM1E8rWjmzEJCEG8hqKGz9NRvdDXXTlhZwkRSp9Nky67JERjqBM7vl_WBtk-wXlGsEhQvfKx64R57WdY-dUAyX_mlqSzGOM87CPW7vOkxrThnDpd5LEOObop9k-zCdg9TM9csxoHq2g0009SJW--M23byzFdgx82Q_KieS_BDLiiJvO2TvoMrHFeajvPm-ZrcKER-CEvKR69d6kUB-lcXhzY0Eurl9KKlCAkNkdxQSydDB9jyvP3uVD_td3Iw6VxdqT6aM9S697GpxKYBWjYVGanlbVoO9pkLsnzZt8yFoi4C1S-uYsBnSJ9nuFDrqDP5aMsYBlFtdvNI_jESzbdaR502CBRLdw7hVwyzna7HFu83hePFrUyI0qfH-K2qb80aSXj9KzlRDcUn2qfDNqUXG8OhgBDikyDCLAUBq98-FPI5cJBg99CVLL90GgFVaDhvayUAmkoSpnUqgpRaPSIpAHbuXLRJnc62zYoCB3xCSJ1Kk9zEzGbFNWsZv5SMd1dXTDfN75KWBMSmzeQS4GDBNd5DbOHYzvE-Y6rCGaKuIO7M147Pj5wQST2zD0b0j14sYZb-C2RZy_--OJfETZAqN_fj8i-8ZoM29S_hWJSbLY59g6WYvXEoD1rq7xKQ-eocZ9e6QVvfjN7T-A0uOW9-7hOnhHFE7TfIYQlzamirTjvRmzbIkZ15NoDLJ96HvKPyT8U6BKljbTtcDzbEo_LvN7WsXlqRJIkloDNkf4-6zke9qOzgGmYM8ONiANts1doXEfc2kQ33iB4w0EQ3k87CZM35J707NVqZPc3Ga71T7eSJfS_jgwZMPzhuLg3z8vrFu7oHWCXqNBGo3vA2NqXkxRgA34IKe7Y1mbYS16EumYDYLc8rLhWzm50mIVfP-YZTleeGTuQl_A_iwyDOlGpRT33lSKcNIU6QV3Nglv9i8AhzyEVxfhCmFCpO715QuX7-yxWYjY_ORt524HDT410kQynk_HFPbqAV65vhbMgvAIHVrP1tg0NdTxW_v4Tv6ukPKO6fwTY3FW3UsKDSdTEzTwejKx3a5fwkHn5xnNPeZGrGDjmjXq2_uXP6S3OPY8YDe4SvDKqxRLAx-3eaiy4lX5eMROAlLHwQkHTXQZZ5FkxhBhv8spQTC1CY8Ebcm1lUinQOt2iJj450Ac_wNFDj4wBi5TGKtRgqlqheqowPIP2yuSx7ofhR7qK5f3pjI-g4rylG2njtMa3AIiJkK6we62-bd22VNYOdSQMTy8M6KIrjZwFaFhc8aE04q6e20ouDFbGKWjiHzdz_Cej3AVeYUKnzKR4uIN1YmGyvidVkaj2YMcfrHgR_FkNXbmDMKnGDE5Iq0QY9zUxW5jSziRc7cZ_NBg16b0H2lG3IKD3zACOnIGr4V88s360UEb0VS_dYy8eEhwUoH_kCO8PxZXqIpZirBXuGYJagmJFHSbIKGiipk25jkKCWtgpHWsFWPnv6rt9Vszxf3TgXUdE4uUYMN6ACovIDUbm9OTc05oe83bTa8qFeZKag7u05oQsC1uJRD1oIght5B1sUmeoY_eJ5rM2Hph5-ePFE7Gm7nEo-OEvM6URtMoG2Oy2pCTdTBJAeZdIL_XN70uX390kvHyr3u7WALjvapYYxFzCr8ZpeNuCLsoml84o_PSj3Dw-zGM8k1dQUzqUasGkjuj9JIIKsIDTzAC5WNEAtuCuUfAyx5yCrfUgDbhtx-dTog79SgOLXxfwl-cb98CCvW3Dwy_iQUdeIaBcFMzh1nsuHcb8awqXzlZSLlkfNap44e4vIgLryplcaEBlJcm5tqFfwz8VEWgGuklwE_WYbzv4R_GKDvVS3RLwutG6gXs9rOsL6pyI7_L32LtfmGHMhxqb_GKP1HJIfRf7RrL6kEGF9rbSxVisjhExa6ehx5ZWnNi7rUaF9KDlwcGhw0pPNr80XDBlUfS7ubMrK9pxuwdCYZ3VfZSaCihG2AEn3XTI4W_RApUlnq95tAkdHZojTeeVIALeykLx7R5eooxOgsF6SMXLnpj2SOczeEteuoc5DDAwo9v8QLKMbjRLtSVEjkGpaSR2GCxBoKsSDFY_XlHbVdMGal1EtK68Ruv9AFBcbiRdoDoOH7W1ktxo4x53mNWVVTYNUgdx9Mj7XDAPOWgQlHe11nm7Bx9ICw2TwYrmaORXz3fhBJVysWimjCTla55ZfbdqOwzUU_Ut4tbYJwL8unx87jAxD4Nm6aqdHlawHdz0CM__aiV9IScDMQ6dXsJT8gb_6XYCcKlo9Ch2Tgy_ngXctvnNx7CKHqCABXHlD2CAKNArj-zr_pz0ITtTBD4hckeRV8UNoQY0omXLRrPAs9SUWcQPBi4inU72TN0GhKrpAdY6D_B4N_c5UNVhWZjZMipTPUx6z-x-S_CU7EKv_o75VSQSHIPbJxhX4oxxJhpOKNbSQxum2xGb0Y8KkzaY4DOvIAyQHVWTTe62npNf0v4DKL9bw7wdZWwj8iv2wNNICKM9_RFq-58ms4iagpEA52Ms6cblrKe9gR5Af-XtvqVX_jac4jhMzM92Vj_LjilpUp-asJzzH4q9x5aRwzjU-FnrnruTrc6sTTx3NZdcvmvk8BWw18wEEbZ7WdJMZNRDdbUJpo9ogMNIuKv3LUCVlBNE1zd_xPafvg_8HXUgFefAL4Q_ZsTTu144-3tvaBABuI1YsVqtpqT4aCB5ZGixWf_eBNcgb84Nts4ihrByFPLHSvquQt13_NkDS-pVkg68C7_lCp6UCyLT4Npu0fyL5vh1bozZdBiyBYrAcyosJBPvT0flbONA3TpjoFaA4gLFcBE4OGAyDwYcI98rLvUvspWQ3PAQhFRe9cajQZPyX08vfji4iQpc_vS-2QPPWekohdnahS3-li8xA7JSWDHBwV1h9uTOVehoiRUHIQy3PbeXF9o9oyH6qbqAfNqaLIVgZYO4SKTiwFsigcTrFo3AyK5fllSv2uC-0gcx0tryy2o7YzAk-vyWgFdfZGNHOIW2fzsHyBP54r0e-hG69tVnVvHZIa-IWWN-XP1ovLErWffps6yofFSqWg1IcGLcSWRZz63ALVW7WzHTcch9jDMy3yP1FwdSrgJ0cjxNlWPNtWrx9QgoAnRXOpbafmDa_KCZtHa5_CORsN5XPmdjWL5dqAn0JGyF8JunXVyhpGwV0xa5O8whsG3Higo90_zaSYRPmBBsHIbVISoy02D74xTCpwALsYyZdTf2TytXDrfB5_mBE-NYBwXBLoMQKOD3sIrFy0fewSqUSpcXxpZHFNZm1wb0sACxLaw8iAtWcUpcSLVFcpGI22p1PGl6DSMYqPFU-UmDtjtklujeCqnGuMfD7q7k5qGSAk8YvsP82jOyr_xfQgEOdsBrwEb2nWmEWIgWYlTPRlt-cVUNaq9Ir5RUBs-he2wCgkfITOGKIluqhb8Fm5g_xiGSiidEdqy2z0t6oEkZRAF8dvT5WI8wR4xQOeTe9E9jDbXiP6ogJS9CRTs0KQO2CCGp-rq7tz4OhjGpPI-QROzYfZR6Y3zHQizogGBZYGpbrlKRq8KIYKVT_zGR4BFAamq9sbmI9EjF_HVPu-9sWiLQOA7zcJJm19Em5OD2tr694l8sPCD9T6fPeB_5mPnDaHjZGuojl-ryA3KnUi0UHRlmI1hVmq0BOjOIzr3PT9qt-Hj4hyLbmxxSzQ5AS-Q68JAfUrKa7ygWWSRulE1YCgwUwGh2pQOBiiDZxqVePT7j5vLkdMdoDH0xnG3dSdXB7RspW0I0VLUGG0MhcJbkxZtT9YP6rTEqnQA-mSgAMyuEqTGN3Qndtr6W3C7bXD8YxFB0TKkVy429ahGa6EC4p0ba9tzO_5LE8JtToEZCze6xE5vwg7-gzJHePXAhe4lER9DjaaSgw0hBdg6fDZMqzBmt8PbEcBYjgmlsoUO0tvDxJMV09WSxjU0yojQ6I2LkDBkSqgFPI5XY0R5N5_yWUXoaZWWM96SvpMO7TUO95wMUPuV-P2BI2MrlMUcufmHAOg_hJmiKhdzE-YHHmA7SPFldKJ0nojUNvl9MEROhWkzVnv3gKJlLl5Vb_eX9pNr8-RAIEEcMhXbQuov4irTXbQiCocvo8PDXfRVCMv7fqUcGjZBvUuTCIylOVoDrtbUZ74ONylxikKkBYXaomKEudSH-MICdwLNIk97lbk5serKbEQphDxHtSmHxGY8vphhU9fD56j0FnlxbED0WAtPv2CC_m3QK1_3oXWW7pQ3RUzwieLnDI8TTYWz1_OnklDBiG4K1jOdAeTWk3IW-ZT3q4MvEwoSC2gTb0LszextzfbAuqSe-Ou7Dn9A6mX00pWpXCBlUxNmCoYlgYgO41cp9tMYprejLwUqpymn5Ufl5UCjw0CRloO2c6whw-9PMUzF0xL8MqL-aO83Nr08MPuFLULt9Z44AIs-vYanz0YWfmzK9TStuRzu_6LhJJxJ5nObRYc1nAFRhOXNNbP5XeuuYQS-QOX4nwbDxRW6OiqCahP6nuhZn6g-_NjS3myuP7TuA2AAnKu0yPLQVBoqoLl3WygwY1K44vjDdlpfeyvZOdgJ1Xbbth2PHZswB7YdsclW4ZhVkSFK-PyRJuCvUiDbhFFwchflTg4rll2kuc06ypX2CU5EnkfLM8YunJV7XuTpFmsXjiWDAXhTxpWCDuqGW8YvHctPnbFWqCEKhveg5zCoTGfak-R-N4P3vNhv_J-MJfRKtXx1moKcZqczVbqk2gOMIKcHh9CH7RNc1K7CaRoCAXI3MtaBgSCIqGeyFeutwjmyqwg7YLBS1_15bwJHenXJ91DbzVE4k-1bfkH8T16jVhcM6pIjCsNvitLkUFdUJfo_bCmkCMpsngXnlBXpqhjLDz9OZBfh8QRE4wYf8R7MNlWrjS2m-m3yOA5OrzluGBj1nesjNDvtvBGrMxEvJO4_Dsg_1w4btvlzvyB8q37iS61xIDAJUQ_c6WWYnGKiWJ92LQpsUdm-oZiJonajozruw-BhaN-gFwRW4UYiWeMyRPTFVnfLtIuBEbk7OfTZdjvoAQA409f3aLRqlLFb-1HMDWzyJtN6HJWkq7nqVrlsOXzU3MO01Q3xENLS6rEvNX4sqpEchYpBOzNsICbK4i31iGfsShhCiHneFaqq306UxVioYRwPrGJV0uFWP5CF6Ta1L0RNVHCPe6eUrTT2Ua9m191ssahgksDPzgg-I-0-6qQi1vHsiQaKcMt9mNTpDVnoz4C9NFAqBIKHitMF4RGmXB4AcBIkDRKBE_Bw05fgrfzhvAtbvb-zgSAzHkkebUePpaA-fSYC_T3UxEiV-9HuIgZRMS9o9eaUoXC7EUjK4kkiAqZ-ADwSyhATlTGs8fGYHZx3K5O0uSOfDuy2Yzb6CAsEVabwAHUQIy-ssni_aYpur5hV3PAblB4S83PEpLXkZMPhg0gcbh9C0X97oLwIg5TpSDQjJTs1_LLBR-TJPrb1cLsAtMqs7t2_e1SttLFXlLSObQXnufHJe1jgzZYprM_0UcZivmtnqDJZCvZ4R0Jk2yb1FFuKx2AE5m6N2i0tE4sOlkwExU1_KL4UJCDVXTkh15ZmE6ithA14gASD5MZDlRYYI0vfm1cEdmot6MV8xJrRuMZ-dWKRlHzmmfHFH2-rEt6V2Nfw39Qmtv-INfRDiymim9OwWTraQyIQRjFqtsfgGfcrXVtuW9M1M3kQezndxJNBLPam-oDSJlQ8r9S3Gh8m2Sid9eaUFylFQEKhhNvQUTnIDjEJcpXbA6pxf-wE6_oWL1ltIqYr8KR2C8ix6sN7fCa_auLB_oSQwIJLJ7pndx0RsAmwswNjC97Z9hv1d3i71Wzu58m9LJSCxUmvwn3qBI5AAqao3h79Det3JITlgHc7cdirI_LWXpprgUkZFcQACztDMBIETqWTBk-t8034E2IdskWVyONUv_CO6XuYNM1AGVXgAD8U9zg67WC0nNCcLmN-5aCp6-xk4fwxeNOBsjevs3rxR6vr8GTTQLyEHmbwRbTV_4L6D2u6Ti99Cc5qODe83rP0_bugwuRNlt9lyoyxEpG5IGjUo3eENf7wtoIE9XVCWBlPrZyHoX8QLGGUF0esUsaI2j8dSN8HcjcgdfidOe9IdWNxNxkJENLJz-7UJoBT6Nz3Q_UJsdOcIVl0AVMHeUvORBIGYE66BRLCl57HbkBO2lQhyDDZSPGsnFK_g1y4pwK6aXr8wWM_4MNiaqmXkMgd3Ywbs8OGGyUmoksFM0_HzOO8nfB4ew7Kkj8TtXvGJq_9UeOrjZ1j-yQjhtL7E9XTWCbxLVvMtoqLzGmQA4NV_Iejg9BEAkiUaMAdFuNRnFyMljso6xmYgDlYWloE7qAEQnz4IwM1qHQXenwuqQrPEIusLl0-hFuBX4oBp165sJtc0jaYcNpTC0KRLtUkE0S0WgJWUQM4Y8A-bqWwYNWUChaqshCRfDHzuOybGL0J0kKaA9rzlsUIUJxI8z2kNs7tcEqryDz18JsRZZHjN6Gxe2yNGiGUVF8UyvGrGmB4wiICrVD5J6Rp26dVyUvGtWOW9nFJn1mA9bVZ_jtUGwTXwhErDgZVU5V_GswxdSXJBviKP3AtTUb4EseC5WGMyPR1Ma7fjmwdGJbOuAxDWkyVPx_mDjxM6Edo0JZoZYDnzQVJSLsTsLYUnZPtCxbCu-_co8T1S4GsrlX8S36Ra075KYwSRqkjYYTZadFcEeRy5o4gmdPtU6IBBX7yswMLjuYLwL3fPZy_I2kpkAuMb60z2IkqRFSUDv2cqa2Kc14qfpW6c5im0o-5wszg07udP1QCMfMnIyoEev7VEigMBHp13Y7Q5KFTo1EpvXTchjCpr-R8siQfe298EImcSCU0Qi_G4YS1vR4TErsYt81SR2Uimw6D4rZrLmC7UXO13gs82nQIpvJFsHExbRKDQxqv_lxtg7P9y_80UKzPX3VqZnhbVJJRut4f6I6hLxQmFau4BeIgmKtdrEXa5r7gCmR86euTc9zfwgJwN-3WDW_n9Xby9vUt7sDHP81vov9BggTUcvYehfSWlyD6nWe51_W7cesjvqM-r4Kj7z24WJbpYlJ6wPJJtJ9GVKP3HuaGYTEHckef1Kg75ZmE6o6wWiVs2L_WysjG2lFi5FFEUwK5PV5gQ_rLAo-W8sO7PqF4EOY2kKx8ktCrIWE70Ne5CYf4D0QVlRgfzn8EmfjdjjCxvUU6zju2HwM-G6oPB-0Vb-PVxq007TVEN02zUqBTVvqCWuZ4ONkq35EgtBctF4XzDC5zTxOrW6PjN7l4xohuK7EGs-gDKknW0qvR9CpK-6F0KfFXhKalwtLS4HWOkVIoHUtPmm7yVt5e4DAzq2rUbp_mi82XHc-gDUCCmRwfL36wcp7LTsz7oXpvxhV-TmTn-_JcylYB8byyLq0FqoSLY_DxOr5AEBY2zoAar1GgtLJ04kComnT7xO_9Qv7Llu-i3iLNE1GpYTOSrR8SvFot9WzF_kT3qJQG7aSSBQSrS5hu7flAUhNS3m0nABUElJ9w_ww-qFwrGNogVfvxpJtKTr08hKbjTlm9jkn7J89y9lzo1gEkxUMWtY5ITVXaeJGS5EYtpAHV38aTmJjvX9r_ypGLvJFGWlvBwt2JQu9wZHNnFgPCAovjpiTFZ20yQr84ad0B0gW",
-    "payloadTag": "wnHO8rORx0Xu23fleqGYYw",
-    "keyrings": [
-      {
-        "id": "code_8ee4ddf2-db1b-4d33-b6b0-bda302c7572c",
-        "label": "Ronald Nyakana",
-        "expiresAt": "2026-09-02T12:36:23.613Z",
-        "salt": "XYQYYAZoiLKmrsGFEqRnNQ",
-        "iv": "F2OhQIk_oGVsHB1r",
-        "ciphertext": "ukbwlIkNPJ_wKFcL2VgRdrr_DoKz9olVbwVIW3KJ-MM",
-        "tag": "7U5F6a7bgwrwxTcgWuleqQ"
+  "records": [
+    {
+      "id": "i500033",
+      "name": "Angella Ofwono",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono",
+      "summary": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500020",
+          "i500031"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500032",
+          "i500034"
+        ]
       }
-    ]
-  }
+    },
+    {
+      "id": "i500027",
+      "name": "Beatrice",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Partnered with Fredrick Kaliisa",
+      "summary": "Partnered with Fredrick Kaliisa. Connected to Fredrick Kaliisa. 3 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500021"
+        ],
+        "childIds": [
+          "i500028",
+          "i500029",
+          "i500030"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500019",
+      "name": "Betty Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500038",
+      "name": "Clayton Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Margaret and Erastus Nyakana",
+      "summary": "Child of Margaret and Erastus Nyakana.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500037",
+          "i500003"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500039",
+          "i500040"
+        ]
+      }
+    },
+    {
+      "id": "i500024",
+      "name": "Cleophas Kaliisa",
+      "lifeSpan": "Died 8 Mar 2026",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500036",
+      "name": "Clide Ssemazzi",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Stella Kaliisa and Hannington Ssemazzi",
+      "summary": "Child of Stella Kaliisa and Hannington Ssemazzi.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500025",
+          "i500035"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500014",
+      "name": "Dorah Nalunga",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Partnered with Patrick Nyakana",
+      "summary": "Partnered with Patrick Nyakana. Connected to Patrick Nyakana. 1 linked child in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500012"
+        ],
+        "childIds": [
+          "i500015"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500016",
+      "name": "Doris Sabuni",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Partnered with Wycliffe Nunda Nyakana",
+      "summary": "Partnered with Wycliffe Nunda Nyakana. Connected to Wycliffe Nunda Nyakana. 2 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500013"
+        ],
+        "childIds": [
+          "i500018",
+          "i500017"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500015",
+      "name": "Douglas Nyakana",
+      "lifeSpan": "Born 3 Feb 1988",
+      "location": "",
+      "branch": "Child of Patrick Nyakana and Dorah Nalunga",
+      "summary": "Child of Patrick Nyakana and Dorah Nalunga.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500012",
+          "i500014"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500018",
+      "name": "Edwardo Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Wycliffe Nunda Nyakana and Doris Sabuni",
+      "summary": "Child of Wycliffe Nunda Nyakana and Doris Sabuni.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500013",
+          "i500016"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500017"
+        ]
+      }
+    },
+    {
+      "id": "i500003",
+      "name": "Erastus Ayendwa Nyakana",
+      "lifeSpan": "Born 1944",
+      "location": "Uganda",
+      "branch": "Partnered with Evelyn Kaliisa",
+      "summary": "Patriarch of the Nyakana family line. Partnered with Evelyn Kaliisa. Connected to Evelyn Kaliisa, Margaret. 8 linked children in this branch. Location: Uganda.",
+      "isDeceased": false,
+      "isPatriarch": true,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500002",
+          "i500037"
+        ],
+        "childIds": [
+          "i500013",
+          "i500001",
+          "i500012",
+          "i500011",
+          "i500010",
+          "i500038",
+          "i500039",
+          "i500040"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500002",
+      "name": "Evelyn Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "Uganda",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa. Connected to Erastus Nyakana. 5 linked children in this branch. Location: Uganda.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [
+          "i500003"
+        ],
+        "childIds": [
+          "i500013",
+          "i500001",
+          "i500012",
+          "i500011",
+          "i500010"
+        ],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019"
+        ]
+      }
+    },
+    {
+      "id": "i500009",
+      "name": "Evelyn Kusiima Nyakana",
+      "lifeSpan": "Born 23 Jan 2017",
+      "location": "",
+      "branch": "Child of Ronald Nyakana and Lillian Susan Nakiwala",
+      "summary": "Child of Ronald Nyakana and Lillian Susan Nakiwala.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500001",
+          "i500006"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500007",
+          "i500008"
+        ]
+      }
+    },
+    {
+      "id": "i500005",
+      "name": "Francis Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "Uganda",
+      "branch": "Partnered with Maria Kasasa",
+      "summary": "Partnered with Maria Kasasa. Connected to Maria Kasasa. 9 linked children in this branch. Location: Uganda.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500004"
+        ],
+        "childIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500028",
+      "name": "Francis Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Fredrick Kaliisa and Beatrice",
+      "summary": "Child of Fredrick Kaliisa and Beatrice.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500021",
+          "i500027"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500029",
+          "i500030"
+        ]
+      }
+    },
+    {
+      "id": "i500011",
+      "name": "Freda Nyakana",
+      "lifeSpan": "Died 29 Oct 1996",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500003",
+          "i500002"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500013",
+          "i500001",
+          "i500012",
+          "i500010"
+        ]
+      }
+    },
+    {
+      "id": "i500021",
+      "name": "Fredrick Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa. Connected to Beatrice. 3 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [
+          "i500027"
+        ],
+        "childIds": [
+          "i500028",
+          "i500029",
+          "i500030"
+        ],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500020",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500020",
+      "name": "Gatrude Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa. Connected to Polycarp Mark Ofwono. 3 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [
+          "i500031"
+        ],
+        "childIds": [
+          "i500032",
+          "i500033",
+          "i500034"
+        ],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500035",
+      "name": "Hannington Ssemazzi",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Partnered with Stella Kaliisa",
+      "summary": "Partnered with Stella Kaliisa. Connected to Stella Kaliisa. 1 linked child in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500025"
+        ],
+        "childIds": [
+          "i500036"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500029",
+      "name": "Henry Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Fredrick Kaliisa and Beatrice",
+      "summary": "Child of Fredrick Kaliisa and Beatrice.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500021",
+          "i500027"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500028",
+          "i500030"
+        ]
+      }
+    },
+    {
+      "id": "i500030",
+      "name": "Herbert Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Fredrick Kaliisa and Beatrice",
+      "summary": "Child of Fredrick Kaliisa and Beatrice.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500021",
+          "i500027"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500028",
+          "i500029"
+        ]
+      }
+    },
+    {
+      "id": "i500026",
+      "name": "Isingoma Amooti Kaliisa",
+      "lifeSpan": "Remembered in the family line",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500008",
+      "name": "Jeremy Murungi Nyakana",
+      "lifeSpan": "Born 4 Jun 2015",
+      "location": "",
+      "branch": "Child of Ronald Nyakana and Lillian Susan Nakiwala",
+      "summary": "Child of Ronald Nyakana and Lillian Susan Nakiwala.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500001",
+          "i500006"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500007",
+          "i500009"
+        ]
+      }
+    },
+    {
+      "id": "i500007",
+      "name": "Jesse Mwesigwa Nyakana",
+      "lifeSpan": "Born 24 May 2010",
+      "location": "",
+      "branch": "Child of Ronald Nyakana and Lillian Susan Nakiwala",
+      "summary": "Child of Ronald Nyakana and Lillian Susan Nakiwala.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500001",
+          "i500006"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500008",
+          "i500009"
+        ]
+      }
+    },
+    {
+      "id": "i500010",
+      "name": "Joy Kabahinda Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500003",
+          "i500002"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500013",
+          "i500001",
+          "i500012",
+          "i500011"
+        ]
+      }
+    },
+    {
+      "id": "i500023",
+      "name": "Julius Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500006",
+      "name": "Lillian Susan Nakiwala",
+      "lifeSpan": "Born 17 Sep 1976",
+      "location": "",
+      "branch": "Partnered with Ronald Nyakana",
+      "summary": "Partnered with Ronald Nyakana. Connected to Ronald Nyakana. 3 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500001"
+        ],
+        "childIds": [
+          "i500007",
+          "i500008",
+          "i500009"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500037",
+      "name": "Margaret",
+      "lifeSpan": "Dates not yet captured",
+      "location": "Kanyambeho",
+      "branch": "Partnered with Erastus Nyakana",
+      "summary": "Partnered with Erastus Nyakana. Connected to Erastus Nyakana. 3 linked children in this branch. Location: Kanyambeho.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500003"
+        ],
+        "childIds": [
+          "i500038",
+          "i500039",
+          "i500040"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500004",
+      "name": "Maria Kasasa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "Uganda",
+      "branch": "Partnered with Francis Kaliisa",
+      "summary": "Partnered with Francis Kaliisa. Connected to Francis Kaliisa. 9 linked children in this branch. Location: Uganda.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500005"
+        ],
+        "childIds": [
+          "i500026",
+          "i500022",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500040",
+      "name": "Mark Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Margaret and Erastus Nyakana",
+      "summary": "Child of Margaret and Erastus Nyakana.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500037",
+          "i500003"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500038",
+          "i500039"
+        ]
+      }
+    },
+    {
+      "id": "i500012",
+      "name": "Patrick Nyakana",
+      "lifeSpan": "Died 5 Jun 2016",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa. Connected to Dorah Nalunga. 1 linked child in this branch.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500003",
+          "i500002"
+        ],
+        "spouseIds": [
+          "i500014"
+        ],
+        "childIds": [
+          "i500015"
+        ],
+        "siblingIds": [
+          "i500013",
+          "i500001",
+          "i500011",
+          "i500010"
+        ]
+      }
+    },
+    {
+      "id": "i500032",
+      "name": "Paul Ofwono",
+      "lifeSpan": "Died 6 Dec 2025",
+      "location": "",
+      "branch": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono",
+      "summary": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500020",
+          "i500031"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500033",
+          "i500034"
+        ]
+      }
+    },
+    {
+      "id": "i500031",
+      "name": "Polycarp Mark Ofwono",
+      "lifeSpan": "Remembered in the family line",
+      "location": "",
+      "branch": "Partnered with Gatrude Kaliisa",
+      "summary": "Partnered with Gatrude Kaliisa. Connected to Gatrude Kaliisa. 3 linked children in this branch.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500020"
+        ],
+        "childIds": [
+          "i500032",
+          "i500033",
+          "i500034"
+        ],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500001",
+      "name": "Ronald Nyakana",
+      "lifeSpan": "Born 1975",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa. Connected to Lillian Susan Nakiwala. 3 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500003",
+          "i500002"
+        ],
+        "spouseIds": [
+          "i500006"
+        ],
+        "childIds": [
+          "i500007",
+          "i500008",
+          "i500009"
+        ],
+        "siblingIds": [
+          "i500013",
+          "i500012",
+          "i500011",
+          "i500010"
+        ]
+      }
+    },
+    {
+      "id": "i500025",
+      "name": "Stella Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa. Connected to Hannington Ssemazzi. 1 linked child in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [
+          "i500035"
+        ],
+        "childIds": [
+          "i500036"
+        ],
+        "siblingIds": [
+          "i500026",
+          "i500022",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500022",
+      "name": "Susan Kaliisa",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500005",
+          "i500004"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500026",
+          "i500025",
+          "i500024",
+          "i500023",
+          "i500021",
+          "i500020",
+          "i500019",
+          "i500002"
+        ]
+      }
+    },
+    {
+      "id": "i500017",
+      "name": "Valerian Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Wycliffe Nunda Nyakana and Doris Sabuni",
+      "summary": "Child of Wycliffe Nunda Nyakana and Doris Sabuni.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500013",
+          "i500016"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500018"
+        ]
+      }
+    },
+    {
+      "id": "i500034",
+      "name": "Vanessa Ofwono",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono",
+      "summary": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500020",
+          "i500031"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500032",
+          "i500033"
+        ]
+      }
+    },
+    {
+      "id": "i500039",
+      "name": "Winnie Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "",
+      "branch": "Child of Margaret and Erastus Nyakana",
+      "summary": "Child of Margaret and Erastus Nyakana.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500037",
+          "i500003"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500038",
+          "i500040"
+        ]
+      }
+    },
+    {
+      "id": "i500013",
+      "name": "Wycliffe Nunda Nyakana",
+      "lifeSpan": "Born 11 Jun 1973",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa. Connected to Doris Sabuni. 2 linked children in this branch.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500003",
+          "i500002"
+        ],
+        "spouseIds": [
+          "i500016"
+        ],
+        "childIds": [
+          "i500018",
+          "i500017"
+        ],
+        "siblingIds": [
+          "i500001",
+          "i500012",
+          "i500011",
+          "i500010"
+        ]
+      }
+    }
+  ]
 }

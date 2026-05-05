@@ -134,8 +134,8 @@ function renderTreeView(payload) {
           <h1>${escapeHtml(payload.site.title || "Nyakana Family Tree")}</h1>
           <p class="lede">${escapeHtml(payload.site.description || "")}</p>
           <div class="hero-actions">
-            <a class="hero-link" href="${buildMailto(payload.site.contactEmail, "Suggest a correction")}" rel="noreferrer">Suggest a correction</a>
-            <a class="hero-link hero-link-secondary" href="${buildMailto(payload.site.contactEmail, "Add my family branch")}" rel="noreferrer">Add your branch</a>
+            <a class="hero-link" href="${escapeHtml(resolveContributionHref(payload, "Suggest a correction"))}" rel="noreferrer">Suggest a correction</a>
+            <a class="hero-link hero-link-secondary" href="${escapeHtml(resolveContributionHref(payload, "Add my family branch"))}" rel="noreferrer">Add your branch</a>
             ${payload.publication.codeProtected ? `<button class="hero-link hero-link-ghost" id="lock-tree-button" type="button">Lock tree</button>` : ""}
           </div>
         </div>
@@ -210,8 +210,8 @@ function renderDetail(record, recordMap, payload) {
       </div>
 
       <div class="footer-cta">
-        <p>The steward team updates the master archive offline and republishes the protected family tree after approved changes.</p>
-        <a class="hero-link" href="${buildMailto(payload.site.contactEmail, `Update for ${record.name}`)}" rel="noreferrer">Send an update for ${escapeHtml(record.name)}</a>
+        <p>The steward team updates the master archive offline and republishes the family tree after approved changes.</p>
+        <a class="hero-link" href="${escapeHtml(resolveContributionHref(payload, `Update for ${record.name}`))}" rel="noreferrer">Send an update for ${escapeHtml(record.name)}</a>
       </div>
     </article>
   `;
@@ -302,6 +302,15 @@ function resolvePeople(ids, recordMap) {
 
 function buildMailto(email, subject) {
   return `mailto:${encodeURIComponent(email || "")}?subject=${encodeURIComponent(subject)}`;
+}
+
+function resolveContributionHref(payload, subject) {
+  const contributionUrl = payload?.site?.contributionUrl?.trim();
+  if (contributionUrl) {
+    return contributionUrl;
+  }
+
+  return buildMailto(payload?.site?.contactEmail, subject);
 }
 
 function formatDate(value) {

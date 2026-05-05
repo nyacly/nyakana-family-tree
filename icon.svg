@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Family Canopy icon</title>
+  <desc id="desc">A circular emblem with a branching tree canopy and roots.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#23342c" />
+      <stop offset="100%" stop-color="#6b7d56" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4e7c8" />
+      <stop offset="100%" stop-color="#d7b06a" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#bg)" />
+  <path
+    d="M128 46c-8 0-14 6-14 14v54l-18-19c-5-5-13-5-18 0s-5 13 0 18l31 32v20l-30 31c-5 5-5 13 0 18s13 5 18 0l17-18 18 19c5 5 13 5 18 0s5-13 0-18l-31-32v-20l31-31c5-5 5-13 0-18s-13-5-18 0l-18 18V60c0-8-6-14-14-14Z"
+    fill="url(#accent)"
+  />
+  <circle cx="128" cy="60" r="20" fill="#f7f0df" opacity="0.96" />
+  <path
+    d="M64 116c20-24 46-36 64-36s44 12 64 36"
+    fill="none"
+    stroke="#f7f0df"
+    stroke-width="16"
+    stroke-linecap="round"
+    opacity="0.88"
+  />
+  <path
+    d="M78 176c20 14 31 22 50 22s30-8 50-22"
+    fill="none"
+    stroke="#f7f0df"
+    stroke-width="16"
+    stroke-linecap="round"
+    opacity="0.76"
+  />
+</svg>

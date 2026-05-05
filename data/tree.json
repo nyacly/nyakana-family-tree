@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-05-05T12:10:13.383Z",
+  "site": {
+    "title": "Nyakana Family Tree",
+    "eyebrow": "Public-safe family view",
+    "description": "Explore the public branch of the Nyakana family tree, search by name, and contact the stewards with corrections or branch additions.",
+    "contactEmail": "nyakanatree@gmail.com",
+    "treeLabel": "Public family branch"
+  },
+  "publication": {
+    "mode": "public-safe",
+    "sourceGeneratedAt": "2026-05-05T12:10:13.156Z",
+    "visibleRecordCount": 6,
+    "featuredRecordId": "",
+    "defaultSelectedId": "i500024"
+  },
+  "records": [
+    {
+      "id": "i500024",
+      "name": "Cleophas Kaliisa",
+      "lifeSpan": "Died 8 Mar 2026",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500026"
+        ]
+      }
+    },
+    {
+      "id": "i500011",
+      "name": "Freda Nyakana",
+      "lifeSpan": "Died 29 Oct 1996",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500012"
+        ]
+      }
+    },
+    {
+      "id": "i500026",
+      "name": "Isingoma Amooti Kaliisa",
+      "lifeSpan": "Remembered in the family line",
+      "location": "",
+      "branch": "Child of Francis Kaliisa and Maria Kasasa",
+      "summary": "Child of Francis Kaliisa and Maria Kasasa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500024"
+        ]
+      }
+    },
+    {
+      "id": "i500012",
+      "name": "Patrick Nyakana",
+      "lifeSpan": "Died 5 Jun 2016",
+      "location": "",
+      "branch": "Child of Erastus Nyakana and Evelyn Kaliisa",
+      "summary": "Child of Erastus Nyakana and Evelyn Kaliisa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "i500011"
+        ]
+      }
+    },
+    {
+      "id": "i500032",
+      "name": "Paul Ofwono",
+      "lifeSpan": "Died 6 Dec 2025",
+      "location": "",
+      "branch": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono",
+      "summary": "Child of Gatrude Kaliisa and Polycarp Mark Ofwono.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "relationships": {
+        "parentIds": [
+          "i500031"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "i500031",
+      "name": "Polycarp Mark Ofwono",
+      "lifeSpan": "Remembered in the family line",
+      "location": "",
+      "branch": "Partnered with Gatrude Kaliisa",
+      "summary": "Partnered with Gatrude Kaliisa.",
+      "isDeceased": true,
+      "isPatriarch": false,
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [],
+        "childIds": [
+          "i500032"
+        ],
+        "siblingIds": []
+      }
+    }
+  ]
+}

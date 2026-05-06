@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-06T10:41:48.215Z",
+  "generatedAt": "2026-05-06T10:44:19.229Z",
   "site": {
     "title": "Nyakana Family Tree",
     "eyebrow": "Family tree",
@@ -15,7 +15,7 @@
   "publication": {
     "mode": "family-open",
     "sourceGeneratedAt": "2026-05-06T10:35:50.276Z",
-    "visibleRecordCount": 41,
+    "visibleRecordCount": 42,
     "featuredRecordId": "i500003",
     "defaultSelectedId": "i500003"
   },
@@ -140,7 +140,9 @@
         "spouseIds": [
           "person_06c15019-2"
         ],
-        "childIds": [],
+        "childIds": [
+          "person_85ab5c9f-9"
+        ],
         "siblingIds": [
           "i500001",
           "i500010",
@@ -195,6 +197,26 @@
         "parentIds": [
           "i500025",
           "i500035"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": []
+      }
+    },
+    {
+      "id": "person_85ab5c9f-9",
+      "name": "Delvin Asiimwe Nyakana",
+      "lifeSpan": "2015",
+      "location": "Uganda",
+      "branch": "Family branch",
+      "summary": "",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500038",
+          "person_06c15019-2"
         ],
         "spouseIds": [],
         "childIds": [],
@@ -897,7 +919,9 @@
         "spouseIds": [
           "i500038"
         ],
-        "childIds": [],
+        "childIds": [
+          "person_85ab5c9f-9"
+        ],
         "siblingIds": []
       }
     },

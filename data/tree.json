@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-06T07:17:48.673Z",
+  "generatedAt": "2026-05-06T10:35:50.409Z",
   "site": {
     "title": "Nyakana Family Tree",
     "eyebrow": "Family tree",
@@ -14,14 +14,14 @@
   },
   "publication": {
     "mode": "family-open",
-    "sourceGeneratedAt": "2026-05-06T07:17:48.554Z",
+    "sourceGeneratedAt": "2026-05-06T10:35:50.276Z",
     "visibleRecordCount": 40,
     "featuredRecordId": "i500003",
     "defaultSelectedId": "i500003"
   },
   "stewardStudio": {
     "enabled": true,
-    "publishEndpoint": "",
+    "publishEndpoint": "https://script.google.com/macros/s/AKfycbxBOoDz5TEz8WbEa05roJMBsTqUWktchSVInKzNEjWthZzwdiWtrWMVfuzegaq8AL6Idg/exec",
     "repo": {
       "owner": "nyacly",
       "name": "nyakana-family-tree",

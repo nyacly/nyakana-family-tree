@@ -195,6 +195,7 @@ function renderViewerTopbar(payload, featured) {
         <a class="btn btn--sm btn--primary" href="${escapeHtml(resolveContributionHref(payload, "Add a person to the Nyakana family tree"))}" rel="noreferrer">
           ${renderIcon("plus")} <span>Add a person</span>
         </a>
+        ${payload.stewardStudio?.enabled ? `<a class="btn btn--sm btn--ghost steward-entry-link" href="${escapeHtml(payload.site.stewardUrl || "./steward/")}">${renderIcon("edit")} <span>Steward Studio</span></a>` : ""}
         ${payload.publication.codeProtected ? `<button class="btn btn--sm btn--ghost" id="lock-tree-button" type="button">Lock</button>` : ""}
       </div>
     </header>
@@ -328,30 +329,40 @@ function renderStewardStudio(payload) {
     null;
 
   appRoot.innerHTML = `
-    <section class="page-shell">
+    <section class="page-shell steward-page">
+      <header class="topbar">
+        <a class="brand" href="${escapeHtml(APP_BASE_URL.href)}">
+          <span class="brand-mark">N</span>
+          <span class="brand-text">
+            <span class="brand-eyebrow">Steward Studio</span>
+            <span class="brand-title">Nyakana</span>
+          </span>
+        </a>
+        <div class="topbar-actions">
+          <a class="btn btn--sm" href="${escapeHtml(APP_BASE_URL.href)}">${renderIcon("tree")} <span>View tree</span></a>
+          <button class="btn btn--sm btn--ghost" id="steward-logout-button" type="button">Sign out</button>
+        </div>
+      </header>
+
       <header class="hero steward-hero">
         <div class="hero-copy">
           <p class="eyebrow">Steward Studio</p>
           <h1>Update the Nyakana family tree</h1>
           <p class="lede">Signed in as ${escapeHtml(state.steward.name)}. Changes publish to GitHub Pages after saving.</p>
-          <div class="hero-actions">
-            <a class="hero-link hero-link-secondary" href="${escapeHtml(APP_BASE_URL.href)}">View tree</a>
-            ${hasPublishingBridge(payload) ? "" : `<button class="hero-link hero-link-ghost" id="reset-publishing-token-button" type="button">Reset token</button>`}
-            <button class="hero-link hero-link-ghost" id="steward-logout-button" type="button">Sign out</button>
-          </div>
+          ${hasPublishingBridge(payload) ? "" : `<button class="btn btn--ghost" id="reset-publishing-token-button" type="button">Reset token</button>`}
         </div>
-        <div class="hero-meta">
-          <p>Records online</p>
-          <strong>${records.length}</strong>
-          <span>Updated ${formatDate(payload.generatedAt)}</span>
+        <div class="hero-stat">
+          <span class="label">Records online</span>
+          <span class="num">${records.length}</span>
+          <span class="sub">Updated ${formatDate(payload.generatedAt)}</span>
         </div>
       </header>
 
       ${renderStewardStatus()}
 
       <section class="steward-editor-grid">
-        <article class="steward-panel">
-          <p class="eyebrow">Add member</p>
+        <article class="steward-panel steward-form-panel" id="add-member">
+          <p class="modal-kicker">Add member</p>
           <h2>Add a new member to the tree</h2>
           ${renderOnlinePersonForm(buildEmptyOnlineRecord(), payload, { formId: "online-new-person-form", submitLabel: "Create and publish", isNew: true })}
         </article>
@@ -367,8 +378,8 @@ function renderStewardStudio(payload) {
           </div>
         </aside>
 
-        <article class="steward-panel steward-panel-wide">
-          <p class="eyebrow">Edit record</p>
+        <article class="steward-panel steward-panel-wide steward-form-panel" id="edit-record">
+          <p class="modal-kicker">Update record</p>
           <h2>${selected ? `Edit ${escapeHtml(selected.name)}` : "No record selected"}</h2>
           ${selected ? renderOnlinePersonForm(selected, payload, { formId: "online-existing-person-form", submitLabel: "Save and publish" }) : ""}
         </article>
@@ -381,7 +392,17 @@ function renderStewardStudio(payload) {
 
 function renderStewardGate(payload) {
   appRoot.innerHTML = `
-    <section class="page-shell page-shell-gated">
+    <section class="page-shell page-shell-gated steward-page">
+      <header class="topbar">
+        <a class="brand" href="${escapeHtml(APP_BASE_URL.href)}">
+          <span class="brand-mark">N</span>
+          <span class="brand-text">
+            <span class="brand-eyebrow">Family Tree</span>
+            <span class="brand-title">Nyakana</span>
+          </span>
+        </a>
+        <a class="btn btn--sm" href="${escapeHtml(APP_BASE_URL.href)}">${renderIcon("tree")} <span>View tree</span></a>
+      </header>
       <header class="hero hero-gated">
         <div class="hero-copy">
           <p class="eyebrow">Steward Studio</p>
@@ -391,8 +412,8 @@ function renderStewardGate(payload) {
       </header>
 
       <section class="unlock-shell">
-        <article class="unlock-card">
-          <p class="feature-tag">Steward access</p>
+        <article class="unlock-card steward-login-card">
+          <p class="modal-kicker">Steward access</p>
           <h2>Sign in to manage records</h2>
           ${renderPublishingTokenHelp(payload)}
           <form id="online-steward-login-form" class="unlock-form">
@@ -408,7 +429,7 @@ function renderStewardGate(payload) {
               <input type="password" name="code" autocomplete="one-time-code" placeholder="Example: RONALD-NYAKANA-STEWARD" required />
             </label>
             ${renderPublishingTokenField()}
-            <button class="hero-link" type="submit">Open Steward Studio</button>
+            <button class="btn btn--primary btn--block" type="submit">Open Steward Studio</button>
           </form>
           ${state.stewardError ? `<p class="unlock-error">${escapeHtml(state.stewardError)}</p>` : ""}
         </article>
@@ -587,7 +608,7 @@ function renderOnlinePersonForm(record, payload, options) {
       </div>
       ${renderOnlineRelationshipSelect("Children", "childIds", relationships.childIds, records, record.id)}
       ${renderLinkedPersonShortcut(record, records)}
-      <button class="hero-link" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
+      <button class="btn btn--primary btn--block form-submit" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
     </form>
   `;
 }
@@ -646,7 +667,7 @@ function renderAddMemberWizard(payload, options) {
         <textarea name="summary" rows="3" placeholder="Optional context, story, or uncertainty."></textarea>
       </label>
       <input type="hidden" name="branch" value="Family branch" />
-      <button class="hero-link" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
+      <button class="btn btn--primary btn--block form-submit" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
     </form>
   `;
 }

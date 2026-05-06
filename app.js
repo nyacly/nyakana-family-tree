@@ -9,7 +9,8 @@ const state = {
   payload: null,
   unlockedPayload: null,
   selectedId: "",
-  treeView: window.localStorage.getItem(TREE_VIEW_STORAGE_KEY) || "patriarch",
+  treeView: window.localStorage.getItem(TREE_VIEW_STORAGE_KEY) || "person",
+  recentlyViewed: [],
   search: "",
   accessCode: "",
   steward: loadStoredSteward(),
@@ -141,56 +142,160 @@ function renderTreeView(payload) {
     records[0] ||
     null;
   const filtered = filterRecords(records, state.search);
+  const activeView = normalizeTreeView(state.treeView);
 
   appRoot.innerHTML = `
-    <section class="page-shell">
-      <header class="hero">
+    <section class="page-shell viewer-page">
+      ${renderViewerTopbar(payload, featured)}
+
+      <header class="hero viewer-hero">
         <div class="hero-copy">
-          <p class="eyebrow">${escapeHtml(payload.site.eyebrow || "Family tree")}</p>
-          <h1>${escapeHtml(payload.site.title || "Nyakana Family Tree")}</h1>
-          <p class="lede">${escapeHtml(payload.site.description || "")}</p>
-          <div class="hero-actions">
-            <a class="hero-link" href="${escapeHtml(resolveContributionHref(payload, "Suggest a correction"))}" rel="noreferrer">Suggest a correction</a>
-            <a class="hero-link hero-link-secondary" href="${escapeHtml(resolveContributionHref(payload, "Add my family branch"))}" rel="noreferrer">Add your branch</a>
-            ${payload.stewardStudio?.enabled ? `<a class="hero-link hero-link-ghost" href="${escapeHtml(payload.site.stewardUrl || "./steward")}">Steward Studio</a>` : ""}
-            ${payload.publication.codeProtected ? `<button class="hero-link hero-link-ghost" id="lock-tree-button" type="button">Lock tree</button>` : ""}
-          </div>
+          <h1>The Nyakana family tree</h1>
+          <p class="lede">Find a relative, see how everyone is connected, and help us keep the family record accurate. Anyone can suggest an update - a steward reviews each one before it is saved.</p>
         </div>
-        <div class="hero-meta">
-          <p>Family records online</p>
-          <strong>${records.length}</strong>
-          <span>Updated ${formatDate(payload.generatedAt)}</span>
+        <div class="hero-stat">
+          <span class="label">People in the tree</span>
+          <span class="num">${records.length}</span>
+          <span class="sub">Last updated ${formatDate(payload.generatedAt)}</span>
         </div>
       </header>
 
-      ${featured && selected ? renderTreeExplorer(featured, selected, recordMap, payload) : ""}
+      ${renderSearchBox(filtered, selected)}
+      ${renderTreeTabs(activeView)}
+      ${renderRecentChips(recordMap)}
 
-      <section class="workspace">
-        <div class="rail">
-          <label class="search-panel">
-            <span>Search by name</span>
-            <input id="search-input" type="search" value="${escapeHtml(state.search)}" placeholder="Search the family tree" />
-          </label>
-
-          <div class="list-panel">
-            <div class="list-panel-header">
-              <p class="eyebrow">Visible family records</p>
-              <strong>${filtered.length} people</strong>
-            </div>
-            <div class="list-stack">
-              ${filtered.map((record) => renderRecordListItem(record, selected?.id === record.id)).join("")}
-            </div>
-          </div>
-        </div>
-
-        <section class="detail-shell">
-          ${selected ? renderDetail(selected, recordMap, payload) : renderEmptyState(payload)}
-        </section>
+      <section class="viewer-workspace">
+        ${selected ? renderTreePanel(activeView, featured || selected, selected, recordMap, payload) : renderEmptyState(payload)}
+        ${selected ? renderDetail(selected, recordMap, payload) : ""}
       </section>
+
+      <p class="footnote">
+        Stewards: ${escapeHtml((payload.meta?.stewards || ["Cnyakana", "Nyacly", "Ronald Nyakana"]).join(" · "))} · Updates publish after steward review.
+      </p>
     </section>
   `;
 
   bindTreeEvents(payload);
+}
+
+function renderViewerTopbar(payload, featured) {
+  return `
+    <header class="topbar">
+      <button class="brand" type="button" ${featured ? `data-select-id="${escapeHtml(featured.id)}"` : ""}>
+        <span class="brand-mark">N</span>
+        <span class="brand-text">
+          <span class="brand-eyebrow">Family Tree</span>
+          <span class="brand-title">Nyakana</span>
+        </span>
+      </button>
+      <div class="topbar-actions">
+        <a class="btn btn--sm" href="${escapeHtml(resolveContributionHref(payload, "How are we related?"))}" rel="noreferrer">
+          ${renderIcon("link")} <span>How are we related?</span>
+        </a>
+        <a class="btn btn--sm btn--primary" href="${escapeHtml(resolveContributionHref(payload, "Add a person to the Nyakana family tree"))}" rel="noreferrer">
+          ${renderIcon("plus")} <span>Add a person</span>
+        </a>
+        ${payload.publication.codeProtected ? `<button class="btn btn--sm btn--ghost" id="lock-tree-button" type="button">Lock</button>` : ""}
+      </div>
+    </header>
+  `;
+}
+
+function renderSearchBox(filtered, selected) {
+  const shouldShowResults = state.search.trim().length > 0;
+  return `
+    <div class="search-row">
+      <label class="search">
+        ${renderIcon("search")}
+        <span class="sr-only">Search the family tree</span>
+        <input id="search-input" type="search" value="${escapeHtml(state.search)}" placeholder="Search the family tree" autocomplete="off" />
+      </label>
+      ${
+        shouldShowResults
+          ? `
+            <div class="search-results" role="listbox" aria-label="Search results">
+              ${filtered.slice(0, 12).map((record) => renderSearchResult(record, selected?.id === record.id)).join("")}
+              ${filtered.length > 12 ? `<p class="search-more">${filtered.length - 12} more matches - keep typing to narrow the list.</p>` : ""}
+              ${!filtered.length ? `<p class="search-more">No family members match that name yet.</p>` : ""}
+            </div>
+          `
+          : ""
+      }
+    </div>
+  `;
+}
+
+function renderSearchResult(record, isSelected) {
+  return `
+    <button class="search-result ${isSelected ? "is-active" : ""}" type="button" data-select-id="${escapeHtml(record.id)}" role="option" aria-selected="${isSelected}">
+      <span class="nm">${escapeHtml(record.name)}</span>
+      <span class="meta">${escapeHtml(record.lifeSpan || "Dates not yet captured")}</span>
+    </button>
+  `;
+}
+
+function renderTreeTabs(activeView) {
+  const views = [
+    ["person", "radial", "Around this person"],
+    ["patriarch", "tree", "Family tree"],
+    ["generations", "list", "By generation"],
+  ];
+
+  return `
+    <div class="tabs" role="tablist" aria-label="Tree view">
+      ${views
+        .map(
+          ([value, icon, label]) => `
+            <button class="tab ${activeView === value ? "is-active" : ""}" type="button" role="tab" aria-selected="${activeView === value}" data-tree-view="${escapeHtml(value)}">
+              ${renderIcon(icon)} <span>${escapeHtml(label)}</span>
+            </button>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderRecentChips(recordMap) {
+  const recent = state.recentlyViewed.map((id) => recordMap.get(id)).filter(Boolean).slice(0, 4);
+  if (!recent.length) {
+    return "";
+  }
+
+  return `
+    <div class="breadcrumb">
+      <span>Recently viewed:</span>
+      ${recent
+        .map((record) => `<button type="button" data-select-id="${escapeHtml(record.id)}">${escapeHtml(record.name)}</button>`)
+        .join("")}
+    </div>
+  `;
+}
+
+function renderTreePanel(activeView, patriarch, selected, recordMap, payload) {
+  const title = activeView === "generations" ? "Generations connected to" : "Centered on";
+  const centeredPerson = activeView === "patriarch" ? patriarch : selected;
+
+  return `
+    <main class="panel tree-panel" aria-label="Family tree">
+      <div class="panel-header">
+        <div>
+          <p class="panel-eyebrow">${escapeHtml(title)}</p>
+          <h2 class="panel-title">${escapeHtml(centeredPerson.name)}</h2>
+        </div>
+        <a class="btn btn--sm" href="${escapeHtml(resolveContributionHref(payload, `Update for ${centeredPerson.name}`))}" rel="noreferrer">
+          ${renderIcon("edit")} <span>Suggest an update</span>
+        </a>
+      </div>
+      ${
+        activeView === "person"
+          ? renderPersonCenteredMap(selected, recordMap)
+          : activeView === "generations"
+            ? renderGenerationMap(selected, recordMap)
+            : renderFamilyMindMap(patriarch, recordMap)
+      }
+    </main>
+  `;
 }
 
 function renderStewardStudio(payload) {
@@ -1008,32 +1113,41 @@ function renderDetail(record, recordMap, payload) {
   const partners = resolvePeople(record.relationships.spouseIds, recordMap);
   const children = resolvePeople(record.relationships.childIds, recordMap);
   const siblings = resolvePeople(record.relationships.siblingIds, recordMap);
+  const summary = cleanFamilyCopy(record.summary) || buildFamilySummary(record, { parents, partners, children, siblings });
 
   return `
-    <article class="feature-panel">
-      <div class="feature-card ${record.id === payload.publication.featuredRecordId ? "is-featured" : ""}">
-        <p class="feature-tag">${record.id === payload.publication.featuredRecordId && payload.publication.featuredRecordId ? "Family heart" : payload.site.treeLabel || "Family branch"}</p>
-        <h2>${escapeHtml(record.name)}</h2>
-        ${record.summary ? `<p class="feature-summary">${escapeHtml(record.summary)}</p>` : ""}
-        <div class="feature-chips">
-          <span>${escapeHtml(record.lifeSpan)}</span>
-          ${record.location ? `<span>${escapeHtml(record.location)}</span>` : ""}
-          ${record.isDeceased ? `<span>Remembered ancestor</span>` : `<span>Family record</span>`}
+    <aside class="panel side-rail detail" aria-label="Family record">
+      <div class="detail-head">
+        <div>
+          <p class="panel-eyebrow">Family record</p>
+          <h2 class="panel-title">${escapeHtml(record.name)}</h2>
         </div>
+        <a class="icon-btn" href="${escapeHtml(resolveContributionHref(payload, `Update for ${record.name}`))}" rel="noreferrer" aria-label="Suggest an update for ${escapeHtml(record.name)}">
+          ${renderIcon("edit")}
+        </a>
       </div>
 
-      <div class="relationship-groups">
+      ${summary ? `<p class="summary-line">${escapeHtml(summary)}</p>` : ""}
+
+      <div class="facts">
+        <span class="fact-chip">${escapeHtml(record.lifeSpan || "Dates not yet captured")}</span>
+        ${record.location && !/not yet captured/iu.test(record.location) ? `<span class="fact-chip">${escapeHtml(record.location)}</span>` : ""}
+        ${record.isDeceased ? `<span class="fact-chip">Remembered</span>` : ""}
+      </div>
+
+      <div class="relations">
         ${renderRelationshipGroup("Parents", parents)}
         ${renderRelationshipGroup("Partners", partners)}
         ${renderRelationshipGroup("Children", children)}
         ${renderRelationshipGroup("Siblings", siblings)}
       </div>
 
-      <div class="footer-cta">
-        <p>The steward team updates the master archive offline and republishes the family tree after approved changes.</p>
-        <a class="hero-link" href="${escapeHtml(resolveContributionHref(payload, `Update for ${record.name}`))}" rel="noreferrer">Send an update for ${escapeHtml(record.name)}</a>
+      <div class="detail-cta">
+        <a class="btn btn--primary" href="${escapeHtml(resolveContributionHref(payload, `Update for ${record.name}`))}" rel="noreferrer">
+          ${renderIcon("edit")} <span>Update this record</span>
+        </a>
       </div>
-    </article>
+    </aside>
   `;
 }
 
@@ -1043,18 +1157,21 @@ function renderRelationshipGroup(label, people) {
   }
 
   return `
-    <section class="relationship-group">
-      <div class="relationship-heading">
+    <section class="relations-block">
+      <div class="relations-block-head">
         <h3>${escapeHtml(label)}</h3>
-        <span>${people.length}</span>
+        <span class="count">${people.length}</span>
       </div>
       <div class="relationship-list">
         ${people
           .map(
             (person) => `
-              <button class="relationship-row" type="button" data-select-id="${escapeHtml(person.id)}">
-                <span class="relationship-name">${escapeHtml(person.name)}</span>
-                <span class="relationship-life">${escapeHtml(person.lifeSpan)}</span>
+              <button class="relation-item" type="button" data-select-id="${escapeHtml(person.id)}">
+                <span class="l">
+                  <span class="nm">${escapeHtml(person.name)}</span>
+                  <span class="sub">${escapeHtml(person.lifeSpan || "Dates not yet captured")}</span>
+                </span>
+                ${renderIcon("chevron")}
               </button>
             `
           )
@@ -1064,68 +1181,20 @@ function renderRelationshipGroup(label, people) {
   `;
 }
 
-function renderTreeExplorer(patriarch, selected, recordMap, payload) {
-  const views = [
-    ["patriarch", "Family tree"],
-    ["person", "Around selected"],
-    ["generations", "By generation"],
-  ];
-  const activeView = views.some(([value]) => value === state.treeView) ? state.treeView : "patriarch";
-  const viewTitles = {
-    patriarch: "Centered on Erastus Ayendwa Nyakana",
-    person: `Around ${selected.name}`,
-    generations: `Generations from ${selected.name}`,
-  };
-
-  return `
-    <section class="mind-map-shell" aria-label="Tree view">
-      <div class="mind-map-header">
-        <div>
-          <p class="eyebrow">Tree view</p>
-          <h2>${escapeHtml(viewTitles[activeView])}</h2>
-        </div>
-        <div class="tree-view-actions">
-          <div class="tree-view-tabs" role="tablist" aria-label="Tree view mode">
-            ${views
-              .map(
-                ([value, label]) => `
-                  <button class="tree-view-tab ${activeView === value ? "is-active" : ""}" type="button" role="tab" aria-selected="${activeView === value}" data-tree-view="${escapeHtml(value)}">
-                    ${escapeHtml(label)}
-                  </button>
-                `
-              )
-              .join("")}
-          </div>
-          <a class="hero-link hero-link-secondary" href="${escapeHtml(resolveContributionHref(payload, "Family tree update"))}" rel="noreferrer">Send an update</a>
-        </div>
-      </div>
-
-      ${
-        activeView === "person"
-          ? renderPersonCenteredMap(selected, recordMap)
-          : activeView === "generations"
-            ? renderGenerationMap(selected, recordMap)
-            : renderFamilyMindMap(patriarch, recordMap)
-      }
-    </section>
-  `;
-}
-
 function renderFamilyMindMap(patriarch, recordMap) {
   const partners = resolvePeople(patriarch.relationships.spouseIds, recordMap);
   const children = resolvePeople(patriarch.relationships.childIds, recordMap);
 
   return `
-    <div class="mind-map-canvas">
-      ${partners.length ? `<div class="mind-map-tier mind-map-partners">${partners.map((person) => renderMindMapNode(person, "Partner")).join("")}</div>` : ""}
-
-      <div class="mind-map-heart-row">
-        <span class="mind-map-line"></span>
-        ${renderMindMapNode(patriarch, "Patriarch", { featured: true })}
-        <span class="mind-map-line"></span>
+    <div class="tree-radial tree-radial-family">
+      <div class="tree-row">
+        <div class="tree-focus-wrap">
+          ${renderMindMapNode(patriarch, patriarch.isPatriarch ? "Patriarch" : "Centered on", { featured: true })}
+          ${partners.length ? `<div class="tree-cards tree-cards-partners">${partners.map((person) => renderMindMapNode(person, "Partner")).join("")}</div>` : ""}
+        </div>
       </div>
 
-      ${children.length ? `<div class="mind-map-branches">${children.map((child) => renderChildBranch(child, recordMap)).join("")}</div>` : ""}
+      ${children.length ? renderTreeCardRow("Children", children, "Child", { count: true }) : ""}
     </div>
   `;
 }
@@ -1137,17 +1206,20 @@ function renderPersonCenteredMap(person, recordMap) {
   const children = resolvePeople(person.relationships.childIds, recordMap);
 
   return `
-    <div class="mind-map-canvas mind-map-canvas-person">
-      ${parents.length ? `<div class="mind-map-tier">${parents.map((parent) => renderMindMapNode(parent, "Parent")).join("")}</div>` : ""}
-      <div class="mind-map-heart-row">
-        <span class="mind-map-line"></span>
-        ${renderMindMapNode(person, person.isPatriarch ? "Patriarch" : "Selected person", { featured: true })}
-        <span class="mind-map-line"></span>
+    <div class="tree-radial">
+      ${parents.length ? renderTreeCardRow("Parents", parents, "Parent") : ""}
+
+      <div class="tree-row">
+        ${parents.length ? `<div class="tree-connector"></div>` : ""}
+        <div class="tree-focus-wrap">
+          ${renderMindMapNode(person, person.isPatriarch ? "Patriarch" : "Centered on", { featured: true })}
+          ${partners.length ? `<div class="tree-cards tree-cards-partners">${partners.map((partner) => renderMindMapNode(partner, "Partner")).join("")}</div>` : ""}
+        </div>
       </div>
-      ${partners.length ? `<div class="mind-map-tier">${partners.map((partner) => renderMindMapNode(partner, "Partner")).join("")}</div>` : ""}
-      ${children.length ? `<div class="mind-map-branches">${children.map((child) => renderChildBranch(child, recordMap)).join("")}</div>` : ""}
-      ${siblings.length ? `<div class="mind-map-tier mind-map-siblings">${siblings.map((sibling) => renderMindMapNode(sibling, "Sibling", { compact: true })).join("")}</div>` : ""}
-      ${!parents.length && !partners.length && !children.length && !siblings.length ? `<p class="tree-empty">No relationships have been linked for ${escapeHtml(person.name)} yet.</p>` : ""}
+
+      ${siblings.length ? renderTreeCardRow("Siblings", siblings, "Sibling") : ""}
+      ${children.length ? renderTreeCardRow("Children", children, "Child", { count: true, connector: true }) : ""}
+      ${!parents.length && !partners.length && !children.length && !siblings.length ? `<p class="tree-empty">No connections recorded yet for ${escapeHtml(person.name)}.</p>` : ""}
     </div>
   `;
 }
@@ -1155,7 +1227,7 @@ function renderPersonCenteredMap(person, recordMap) {
 function renderGenerationMap(root, recordMap) {
   const groups = buildGenerationGroups(root, recordMap);
   return `
-    <div class="generation-map">
+    <div class="gen-list">
       ${groups.map((group) => renderGenerationGroup(group)).join("")}
     </div>
   `;
@@ -1167,12 +1239,10 @@ function renderGenerationGroup(group) {
   }
 
   return `
-    <section class="generation-group">
-      <div class="generation-heading">
-        <h3>${escapeHtml(group.label)}</h3>
-        <span>${group.people.length}</span>
-      </div>
-      <div class="generation-list">
+    <section class="gen-group">
+      <h3>${escapeHtml(group.label)}</h3>
+      <div class="gen-sub">${group.people.length} ${group.people.length === 1 ? "person" : "people"}</div>
+      <div class="gen-cards">
         ${group.people.map((person) => renderMindMapNode(person, group.role, { compact: group.compact })).join("")}
       </div>
     </section>
@@ -1214,10 +1284,25 @@ function renderChildBranch(child, recordMap) {
   `;
 }
 
+function renderTreeCardRow(label, people, role, options = {}) {
+  return `
+    <div class="tree-row">
+      ${options.connector ? `<div class="tree-connector"></div>` : ""}
+      <span class="tree-label">${escapeHtml(label)}${options.count ? ` (${people.length})` : ""}</span>
+      <div class="tree-cards">
+        ${people.map((person) => renderMindMapNode(person, role)).join("")}
+      </div>
+    </div>
+  `;
+}
+
 function renderMindMapNode(person, role, options = {}) {
-  const classes = ["mind-map-node"];
+  const classes = ["pcard"];
   if (options.featured) {
-    classes.push("is-heart");
+    classes.push("is-focus");
+  }
+  if (person.isDeceased) {
+    classes.push("is-deceased");
   }
   if (options.compact) {
     classes.push("is-compact");
@@ -1225,20 +1310,99 @@ function renderMindMapNode(person, role, options = {}) {
 
   return `
     <button class="${classes.join(" ")}" type="button" data-select-id="${escapeHtml(person.id)}">
-      <span class="mind-map-role">${escapeHtml(role)}</span>
-      <strong>${escapeHtml(person.name)}</strong>
-      ${options.compact ? "" : `<span>${escapeHtml(person.lifeSpan || "Dates not yet captured")}</span>`}
+      <span class="pcard-role">${escapeHtml(role)}</span>
+      <span class="pcard-name">${escapeHtml(person.name)}</span>
+      ${options.compact ? "" : `<span class="pcard-meta">${escapeHtml(person.lifeSpan || "Dates not yet captured")}</span>`}
     </button>
+  `;
+}
+
+function normalizeTreeView(value) {
+  if (["person", "patriarch", "generations"].includes(value)) {
+    return value;
+  }
+
+  if (value === "vertical") {
+    return "patriarch";
+  }
+
+  if (value === "list") {
+    return "generations";
+  }
+
+  return "person";
+}
+
+function cleanFamilyCopy(value) {
+  const text = String(value || "").trim();
+  if (!text) {
+    return "";
+  }
+
+  return text
+    .split(".")
+    .map((sentence) => sentence.trim())
+    .filter(Boolean)
+    .filter((sentence) => !/(heritage|gedcom|import|private full-tree|prototype|privacy rules|visible only)/iu.test(sentence))
+    .map((sentence) => `${sentence}.`)
+    .join(" ")
+    .trim();
+}
+
+function buildFamilySummary(record, groups) {
+  const parts = [];
+
+  if (groups.parents.length) {
+    parts.push(`Child of ${formatNameList(groups.parents)}.`);
+  }
+  if (groups.partners.length) {
+    parts.push(`Connected to ${formatNameList(groups.partners)}.`);
+  }
+  if (groups.children.length) {
+    parts.push(`${groups.children.length} linked ${groups.children.length === 1 ? "child" : "children"}.`);
+  }
+  if (!parts.length && record.branch) {
+    parts.push(cleanFamilyCopy(record.branch));
+  }
+
+  return parts.filter(Boolean).join(" ");
+}
+
+function formatNameList(people) {
+  const names = people.map((person) => person.name);
+  if (names.length <= 2) {
+    return names.join(" and ");
+  }
+
+  return `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`;
+}
+
+function renderIcon(name) {
+  const icons = {
+    chevron: `<path d="m9 6 6 6-6 6" />`,
+    edit: `<path d="M4 20h4l10.5-10.5a2.8 2.8 0 0 0-4-4L4 16v4Z" /><path d="m13.5 6.5 4 4" />`,
+    link: `<path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1" /><path d="M14 11a5 5 0 0 0-7.1 0l-2 2a5 5 0 0 0 7.1 7.1l1.1-1.1" />`,
+    list: `<path d="M8 6h13" /><path d="M8 12h13" /><path d="M8 18h13" /><path d="M3 6h.01" /><path d="M3 12h.01" /><path d="M3 18h.01" />`,
+    plus: `<path d="M12 5v14" /><path d="M5 12h14" />`,
+    radial: `<circle cx="12" cy="12" r="2" /><circle cx="6" cy="6" r="2" /><circle cx="18" cy="6" r="2" /><circle cx="6" cy="18" r="2" /><circle cx="18" cy="18" r="2" /><path d="M8 8.2 10.3 10" /><path d="m13.7 10 2.3-1.8" /><path d="m8 15.8 2.3-1.8" /><path d="m13.7 14 2.3 1.8" />`,
+    search: `<circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" />`,
+    tree: `<path d="M12 4v16" /><path d="M12 8H7v5" /><path d="M12 8h5v5" /><path d="M7 18h10" />`,
+  };
+
+  return `
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      ${icons[name] || icons.chevron}
+    </svg>
   `;
 }
 
 function renderEmptyState(payload) {
   return `
-    <article class="feature-panel">
-      <div class="feature-card">
-        <p class="feature-tag">${escapeHtml(payload.site.treeLabel || "Family branch")}</p>
+    <article class="panel">
+      <div class="empty-card">
+        <p class="panel-eyebrow">${escapeHtml(payload.site.treeLabel || "Family branch")}</p>
         <h2>No records are available yet</h2>
-        <p class="feature-summary">The steward team has not published this branch yet.</p>
+        <p>The steward team has not published this branch yet.</p>
       </div>
     </article>
   `;
@@ -1252,17 +1416,22 @@ function bindTreeEvents(payload) {
 
   document.querySelectorAll("[data-select-id]").forEach((button) => {
     button.addEventListener("click", () => {
-      state.selectedId = button.dataset.selectId || "";
+      const nextId = button.dataset.selectId || "";
+      if (state.selectedId && state.selectedId !== nextId) {
+        state.recentlyViewed = [state.selectedId, ...state.recentlyViewed.filter((id) => id !== state.selectedId && id !== nextId)].slice(0, 6);
+      }
+      state.selectedId = nextId;
       const params = new URLSearchParams(window.location.search);
       params.set("person", state.selectedId);
       window.history.replaceState({}, "", `${window.location.pathname}?${params}`);
+      state.search = "";
       renderTreeView(payload);
     });
   });
 
   document.querySelectorAll("[data-tree-view]").forEach((button) => {
     button.addEventListener("click", () => {
-      state.treeView = button.dataset.treeView || "patriarch";
+      state.treeView = normalizeTreeView(button.dataset.treeView || "person");
       window.localStorage.setItem(TREE_VIEW_STORAGE_KEY, state.treeView);
       renderTreeView(payload);
     });

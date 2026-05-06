@@ -1,6 +1,7 @@
 const appRoot = document.querySelector("#app");
 const ACCESS_STORAGE_KEY = "nyakana-family-tree-access-code";
 const STEWARD_STORAGE_KEY = "nyakana-family-tree-steward";
+const STEWARD_TOKEN_STORAGE_KEY = "nyakana-family-tree-publishing-token";
 const APP_BASE_URL = new URL("./", document.querySelector('script[src$="app.js"]')?.src || window.location.href);
 
 const state = {
@@ -202,6 +203,8 @@ function renderStewardStudio(payload) {
     return;
   }
 
+  state.steward = hydrateStoredSteward(state.steward);
+
   if (!state.steward?.name || !state.steward?.token) {
     renderStewardGate(payload);
     return;
@@ -223,7 +226,8 @@ function renderStewardStudio(payload) {
           <h1>Update the Nyakana family tree</h1>
           <p class="lede">Signed in as ${escapeHtml(state.steward.name)}. Changes publish to GitHub Pages after saving.</p>
           <div class="hero-actions">
-            <a class="hero-link hero-link-secondary" href="./">View tree</a>
+            <a class="hero-link hero-link-secondary" href="${escapeHtml(APP_BASE_URL.href)}">View tree</a>
+            <button class="hero-link hero-link-ghost" id="reset-publishing-token-button" type="button">Reset token</button>
             <button class="hero-link hero-link-ghost" id="steward-logout-button" type="button">Sign out</button>
           </div>
         </div>
@@ -240,7 +244,7 @@ function renderStewardStudio(payload) {
         <article class="steward-panel">
           <p class="eyebrow">Add member</p>
           <h2>Add a new member to the tree</h2>
-          ${renderOnlinePersonForm(buildEmptyOnlineRecord(), payload, { formId: "online-new-person-form", submitLabel: "Create and publish" })}
+          ${renderOnlinePersonForm(buildEmptyOnlineRecord(), payload, { formId: "online-new-person-form", submitLabel: "Create and publish", isNew: true })}
         </article>
 
         <aside class="steward-panel">
@@ -293,10 +297,7 @@ function renderStewardGate(payload) {
               <span>Steward code</span>
               <input type="password" name="code" autocomplete="one-time-code" placeholder="Example: RONALD-NYAKANA-STEWARD" required />
             </label>
-            <label>
-              <span>Publishing token</span>
-              <input type="password" name="token" autocomplete="off" placeholder="GitHub token for the Pages repo" required />
-            </label>
+            ${renderPublishingTokenField()}
             <button class="hero-link" type="submit">Open Steward Studio</button>
           </form>
           ${state.stewardError ? `<p class="unlock-error">${escapeHtml(state.stewardError)}</p>` : ""}
@@ -310,7 +311,7 @@ function renderStewardGate(payload) {
     const form = new FormData(event.currentTarget);
     const name = form.get("name")?.toString() || "";
     const code = form.get("code")?.toString() || "";
-    const token = form.get("token")?.toString() || "";
+    const token = form.get("token")?.toString() || loadStoredPublishingToken();
     const isValid = await validateStewardCode(payload.stewardStudio.stewards, name, code);
 
     if (!isValid) {
@@ -319,11 +320,35 @@ function renderStewardGate(payload) {
       return;
     }
 
+    if (!token) {
+      state.stewardError = "This device needs a publishing token once before it can save changes.";
+      renderStewardGate(payload);
+      return;
+    }
+
     state.steward = { name, token };
     state.stewardError = "";
+    window.localStorage.setItem(STEWARD_TOKEN_STORAGE_KEY, token);
     window.localStorage.setItem(STEWARD_STORAGE_KEY, JSON.stringify(state.steward));
     renderStewardStudio(payload);
   });
+}
+
+function renderPublishingTokenField() {
+  if (loadStoredPublishingToken()) {
+    return `
+      <div class="saved-token-note">
+        Publishing token saved on this device. Sign in with your steward name and code.
+      </div>
+    `;
+  }
+
+  return `
+    <label>
+      <span>Publishing token</span>
+      <input type="password" name="token" autocomplete="off" placeholder="GitHub token for the Pages repo" required />
+    </label>
+  `;
 }
 
 function renderStewardStatus() {
@@ -351,8 +376,17 @@ function renderOnlinePersonForm(record, payload, options) {
   const records = [...payload.records].sort((left, right) => left.name.localeCompare(right.name));
   const relationships = record.relationships || { parentIds: [], spouseIds: [], childIds: [], siblingIds: [] };
 
+  if (options.isNew) {
+    return renderAddMemberWizard(payload, options);
+  }
+
   return `
     <form id="${escapeHtml(options.formId)}" class="online-person-form" data-record-id="${escapeHtml(record.id || "")}">
+      <div class="wizard-steps">
+        <span>1. Details</span>
+        <span>2. Family links</span>
+        <span>3. Publish</span>
+      </div>
       <label>
         <span>Name</span>
         <input type="text" name="name" value="${escapeHtml(record.name || "")}" required />
@@ -375,11 +409,74 @@ function renderOnlinePersonForm(record, payload, options) {
         <span>Summary</span>
         <textarea name="summary" rows="3">${escapeHtml(record.summary || "")}</textarea>
       </label>
+      <div class="relationship-guide">
+        <h3>Family links</h3>
+        <p>Use parents for this person's mother/father or guardians. Use partners for spouses. Children linked here will also point back to this person as a parent.</p>
+      </div>
       <div class="form-two-up">
         ${renderOnlineRelationshipSelect("Parents", "parentIds", relationships.parentIds, records, record.id)}
         ${renderOnlineRelationshipSelect("Partners", "spouseIds", relationships.spouseIds, records, record.id)}
       </div>
       ${renderOnlineRelationshipSelect("Children", "childIds", relationships.childIds, records, record.id)}
+      <button class="hero-link" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
+    </form>
+  `;
+}
+
+function renderAddMemberWizard(payload, options) {
+  const records = [...payload.records].sort((left, right) => left.name.localeCompare(right.name));
+
+  return `
+    <form id="${escapeHtml(options.formId)}" class="online-person-form" data-record-id="">
+      <div class="wizard-steps">
+        <span>1. Who are we adding?</span>
+        <span>2. How are they related?</span>
+        <span>3. Publish</span>
+      </div>
+      <label>
+        <span>New member name</span>
+        <input type="text" name="name" placeholder="Example: Sarah Nyakana" required />
+      </label>
+      <div class="form-two-up">
+        <label>
+          <span>Life facts</span>
+          <input type="text" name="lifeSpan" placeholder="Born 1994" />
+        </label>
+        <label>
+          <span>Location</span>
+          <input type="text" name="location" placeholder="Kampala, Uganda" />
+        </label>
+      </div>
+      <label>
+        <span>How should they be connected?</span>
+        <select name="relationshipType" id="new-relationship-type">
+          <option value="child">Child of two parents or one known parent</option>
+          <option value="partner">Spouse / partner of an existing member</option>
+          <option value="parent">Parent of an existing member</option>
+          <option value="sibling">Sibling of an existing member</option>
+          <option value="standalone">Not sure yet</option>
+        </select>
+      </label>
+      <div class="relationship-builder" data-relationship-section="child">
+        <div class="form-two-up">
+          ${renderSingleRecordSelect("Parent 1", "parentOneId", records)}
+          ${renderSingleRecordSelect("Parent 2", "parentTwoId", records)}
+        </div>
+      </div>
+      <div class="relationship-builder is-hidden" data-relationship-section="partner">
+        ${renderSingleRecordSelect("Existing spouse / partner", "partnerId", records)}
+      </div>
+      <div class="relationship-builder is-hidden" data-relationship-section="parent">
+        ${renderSingleRecordSelect("Existing child", "childId", records)}
+      </div>
+      <div class="relationship-builder is-hidden" data-relationship-section="sibling">
+        ${renderSingleRecordSelect("Existing sibling", "siblingId", records)}
+      </div>
+      <label>
+        <span>Notes for the family view</span>
+        <textarea name="summary" rows="3" placeholder="Optional context, story, or uncertainty."></textarea>
+      </label>
+      <input type="hidden" name="branch" value="Family branch" />
       <button class="hero-link" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
     </form>
   `;
@@ -399,11 +496,38 @@ function renderOnlineRelationshipSelect(label, name, selectedIds = [], records, 
   `;
 }
 
+function renderSingleRecordSelect(label, name, records) {
+  return `
+    <label>
+      <span>${escapeHtml(label)}</span>
+      <select name="${escapeHtml(name)}">
+        <option value="">Unknown / not listed yet</option>
+        ${records.map((record) => `<option value="${escapeHtml(record.id)}">${escapeHtml(record.name)}</option>`).join("")}
+      </select>
+    </label>
+  `;
+}
+
 function bindStewardStudioEvents(payload) {
   document.querySelector("#steward-logout-button")?.addEventListener("click", () => {
     state.steward = null;
     window.localStorage.removeItem(STEWARD_STORAGE_KEY);
     renderStewardStudio(payload);
+  });
+
+  document.querySelector("#reset-publishing-token-button")?.addEventListener("click", () => {
+    state.steward = null;
+    state.stewardMessage = "";
+    state.stewardError = "";
+    window.localStorage.removeItem(STEWARD_STORAGE_KEY);
+    window.localStorage.removeItem(STEWARD_TOKEN_STORAGE_KEY);
+    renderStewardStudio(payload);
+  });
+
+  document.querySelector("#new-relationship-type")?.addEventListener("change", (event) => {
+    document.querySelectorAll("[data-relationship-section]").forEach((section) => {
+      section.classList.toggle("is-hidden", section.dataset.relationshipSection !== event.currentTarget.value);
+    });
   });
 
   document.querySelector("#steward-search-input")?.addEventListener("input", (event) => {
@@ -453,6 +577,7 @@ async function saveOnlinePerson(payload, form) {
         siblingIds: [],
       },
     };
+    applyGuidedRelationship(person, formData, nextPayload.records);
 
     if (!person.name) {
       throw new Error("A name is required before publishing.");
@@ -481,6 +606,33 @@ async function saveOnlinePerson(payload, form) {
   } finally {
     state.stewardSaving = false;
     renderStewardStudio(state.unlockedPayload || state.payload);
+  }
+}
+
+function applyGuidedRelationship(person, formData, records) {
+  const relationshipType = formData.get("relationshipType")?.toString() || "";
+  if (!relationshipType) {
+    return;
+  }
+
+  const recordMap = new Map(records.map((record) => [record.id, record]));
+  const addIfKnown = (values) => values.map((value) => value?.toString()).filter((value) => value && recordMap.has(value));
+
+  if (relationshipType === "child") {
+    person.relationships.parentIds = addIfKnown([formData.get("parentOneId"), formData.get("parentTwoId")]);
+  }
+
+  if (relationshipType === "partner") {
+    person.relationships.spouseIds = addIfKnown([formData.get("partnerId")]);
+  }
+
+  if (relationshipType === "parent") {
+    person.relationships.childIds = addIfKnown([formData.get("childId")]);
+  }
+
+  if (relationshipType === "sibling") {
+    const sibling = recordMap.get(formData.get("siblingId")?.toString() || "");
+    person.relationships.parentIds = sibling?.relationships?.parentIds ? [...sibling.relationships.parentIds] : [];
   }
 }
 
@@ -728,6 +880,21 @@ function loadStoredSteward() {
   } catch {
     return null;
   }
+}
+
+function hydrateStoredSteward(steward) {
+  if (!steward?.name) {
+    return steward;
+  }
+
+  return {
+    ...steward,
+    token: steward.token || loadStoredPublishingToken(),
+  };
+}
+
+function loadStoredPublishingToken() {
+  return window.localStorage.getItem(STEWARD_TOKEN_STORAGE_KEY) || "";
 }
 
 function filterRecords(records, search) {

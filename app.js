@@ -161,6 +161,8 @@ function renderTreeView(payload) {
         </div>
       </header>
 
+      ${featured ? renderFamilyMindMap(featured, recordMap, payload) : ""}
+
       <section class="workspace">
         <div class="rail">
           <label class="search-panel">
@@ -1057,6 +1059,71 @@ function renderRelationshipGroup(label, people) {
           .join("")}
       </div>
     </section>
+  `;
+}
+
+function renderFamilyMindMap(patriarch, recordMap, payload) {
+  const partners = resolvePeople(patriarch.relationships.spouseIds, recordMap);
+  const children = resolvePeople(patriarch.relationships.childIds, recordMap);
+
+  return `
+    <section class="mind-map-shell" aria-label="Tree view centered on ${escapeHtml(patriarch.name)}">
+      <div class="mind-map-header">
+        <div>
+          <p class="eyebrow">Tree view</p>
+          <h2>Centered on Erastus Ayendwa Nyakana</h2>
+        </div>
+        <a class="hero-link hero-link-secondary" href="${escapeHtml(resolveContributionHref(payload, "Family tree update"))}" rel="noreferrer">Send an update</a>
+      </div>
+
+      <div class="mind-map-canvas">
+        ${partners.length ? `<div class="mind-map-tier mind-map-partners">${partners.map((person) => renderMindMapNode(person, "Partner")).join("")}</div>` : ""}
+
+        <div class="mind-map-heart-row">
+          <span class="mind-map-line"></span>
+          ${renderMindMapNode(patriarch, "Patriarch", { featured: true })}
+          <span class="mind-map-line"></span>
+        </div>
+
+        ${children.length ? `<div class="mind-map-branches">${children.map((child) => renderChildBranch(child, recordMap)).join("")}</div>` : ""}
+      </div>
+    </section>
+  `;
+}
+
+function renderChildBranch(child, recordMap) {
+  const grandchildren = resolvePeople(child.relationships.childIds, recordMap);
+  return `
+    <article class="mind-map-branch">
+      ${renderMindMapNode(child, "Child")}
+      ${
+        grandchildren.length
+          ? `
+            <div class="mind-map-grandchildren">
+              ${grandchildren.map((person) => renderMindMapNode(person, "Grandchild", { compact: true })).join("")}
+            </div>
+          `
+          : ""
+      }
+    </article>
+  `;
+}
+
+function renderMindMapNode(person, role, options = {}) {
+  const classes = ["mind-map-node"];
+  if (options.featured) {
+    classes.push("is-heart");
+  }
+  if (options.compact) {
+    classes.push("is-compact");
+  }
+
+  return `
+    <button class="${classes.join(" ")}" type="button" data-select-id="${escapeHtml(person.id)}">
+      <span class="mind-map-role">${escapeHtml(role)}</span>
+      <strong>${escapeHtml(person.name)}</strong>
+      ${options.compact ? "" : `<span>${escapeHtml(person.lifeSpan || "Dates not yet captured")}</span>`}
+    </button>
   `;
 }
 

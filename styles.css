@@ -144,6 +144,186 @@ button {
   line-height: 1;
 }
 
+.mind-map-shell {
+  margin: 0 0 24px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(238, 224, 190, 0.72), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(251, 247, 239, 0.72));
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.mind-map-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 4px 4px 18px;
+}
+
+.mind-map-header h2 {
+  max-width: 18ch;
+  margin: 6px 0 0;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.03em;
+}
+
+.mind-map-canvas {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  min-height: 440px;
+  padding: 18px;
+  border-radius: 26px;
+  background:
+    linear-gradient(rgba(32, 54, 45, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(32, 54, 45, 0.07) 1px, transparent 1px),
+    rgba(255, 255, 255, 0.46);
+  background-size: 42px 42px;
+}
+
+.mind-map-canvas::before {
+  content: "";
+  position: absolute;
+  top: 88px;
+  bottom: 88px;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(32, 54, 45, 0.28), transparent);
+}
+
+.mind-map-tier,
+.mind-map-heart-row {
+  position: relative;
+  z-index: 1;
+}
+
+.mind-map-tier {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.mind-map-tier .mind-map-node {
+  width: min(270px, 100%);
+}
+
+.mind-map-heart-row {
+  display: grid;
+  grid-template-columns: minmax(40px, 1fr) auto minmax(40px, 1fr);
+  align-items: center;
+  gap: 18px;
+}
+
+.mind-map-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(32, 54, 45, 0.3), transparent);
+}
+
+.mind-map-branches {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.mind-map-branch {
+  display: grid;
+  gap: 10px;
+  justify-items: stretch;
+}
+
+.mind-map-grandchildren {
+  display: grid;
+  gap: 8px;
+  padding: 0 0 0 14px;
+  border-left: 1px solid rgba(32, 54, 45, 0.16);
+}
+
+.mind-map-node {
+  width: 100%;
+  min-width: 0;
+  padding: 14px 16px;
+  border: 1px solid rgba(32, 54, 45, 0.14);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--ink);
+  text-align: left;
+  box-shadow: 0 14px 28px rgba(32, 54, 45, 0.07);
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.mind-map-node:hover,
+.mind-map-node:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(32, 54, 45, 0.34);
+  box-shadow: 0 18px 34px rgba(32, 54, 45, 0.11);
+  outline: none;
+}
+
+.mind-map-node strong,
+.mind-map-node span {
+  display: block;
+}
+
+.mind-map-node strong {
+  margin-top: 5px;
+  font-size: 1.08rem;
+  line-height: 1.08;
+}
+
+.mind-map-node span:not(.mind-map-role) {
+  margin-top: 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+
+.mind-map-role {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.mind-map-node.is-heart {
+  width: min(500px, 70vw);
+  padding: 22px 24px;
+  border-color: rgba(238, 224, 190, 0.34);
+  background: linear-gradient(180deg, rgba(37, 61, 50, 0.98), rgba(31, 49, 41, 0.98));
+  color: #fbf7ef;
+  text-align: center;
+}
+
+.mind-map-node.is-heart strong {
+  font-size: clamp(1.5rem, 3.6vw, 3rem);
+}
+
+.mind-map-node.is-heart .mind-map-role,
+.mind-map-node.is-heart span:not(.mind-map-role) {
+  color: rgba(251, 247, 239, 0.78);
+}
+
+.mind-map-node.is-compact {
+  padding: 10px 12px;
+  border-radius: 16px;
+  box-shadow: none;
+}
+
+.mind-map-node.is-compact strong {
+  font-size: 0.92rem;
+}
+
 .workspace {
   display: grid;
   grid-template-columns: minmax(260px, 320px) minmax(0, 1fr);
@@ -649,6 +829,41 @@ button {
     max-width: 320px;
   }
 
+  .mind-map-shell {
+    padding: 14px;
+    border-radius: 28px;
+  }
+
+  .mind-map-header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .mind-map-header .hero-link {
+    width: auto;
+  }
+
+  .mind-map-canvas {
+    min-height: 0;
+    overflow-x: auto;
+    padding: 18px;
+  }
+
+  .mind-map-tier .mind-map-node {
+    width: 210px;
+  }
+
+  .mind-map-branches {
+    display: flex;
+    width: max-content;
+    min-width: 100%;
+    gap: 12px;
+  }
+
+  .mind-map-branch {
+    width: 210px;
+  }
+
   .rail {
     order: 2;
   }
@@ -685,6 +900,56 @@ button {
 
   .hero-link {
     width: 100%;
+  }
+
+  .mind-map-header .hero-link {
+    width: 100%;
+  }
+
+  .mind-map-header h2 {
+    max-width: 14ch;
+  }
+
+  .mind-map-canvas {
+    gap: 14px;
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .mind-map-canvas::before,
+  .mind-map-line {
+    display: none;
+  }
+
+  .mind-map-heart-row {
+    display: block;
+  }
+
+  .mind-map-node.is-heart {
+    width: 100%;
+    padding: 18px;
+    text-align: left;
+  }
+
+  .mind-map-node.is-heart strong {
+    font-size: 1.55rem;
+  }
+
+  .mind-map-partners {
+    justify-content: stretch;
+  }
+
+  .mind-map-partners .mind-map-node {
+    min-width: 180px;
+  }
+
+  .mind-map-node {
+    padding: 12px 13px;
+    border-radius: 16px;
+  }
+
+  .mind-map-node strong {
+    font-size: 0.98rem;
   }
 
   .unlock-card {

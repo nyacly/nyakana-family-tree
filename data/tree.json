@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-06T10:45:42.960Z",
+  "generatedAt": "2026-05-06T10:46:37.744Z",
   "site": {
     "title": "Nyakana Family Tree",
     "eyebrow": "Family tree",
@@ -207,8 +207,8 @@
     {
       "id": "person_85ab5c9f-9",
       "name": "Delvin Asiimwe Nyakana",
-      "lifeSpan": "2015",
-      "location": "Uganda",
+      "lifeSpan": "Born 2015",
+      "location": "Kampala, Uganda",
       "branch": "Family branch",
       "summary": "",
       "isDeceased": false,

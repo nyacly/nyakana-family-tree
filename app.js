@@ -285,6 +285,7 @@ function renderStewardGate(payload) {
         <article class="unlock-card">
           <p class="feature-tag">Steward access</p>
           <h2>Sign in to manage records</h2>
+          ${renderPublishingTokenHelp(payload)}
           <form id="online-steward-login-form" class="unlock-form">
             <label>
               <span>Steward name</span>
@@ -354,6 +355,31 @@ function renderPublishingTokenField() {
       <span>Publishing token</span>
       <input type="password" name="token" autocomplete="off" placeholder="GitHub token for the Pages repo" required />
     </label>
+  `;
+}
+
+function renderPublishingTokenHelp(payload) {
+  const repo = payload.stewardStudio.repo;
+  return `
+    <div class="token-help-card">
+      <h3>Need a publishing token?</h3>
+      <p>The Studio cannot generate a GitHub token itself. GitHub must issue it from the account that owns or can edit the Pages repo.</p>
+      <a class="token-help-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noreferrer">Create a GitHub token</a>
+      <dl>
+        <div>
+          <dt>Repository</dt>
+          <dd>${escapeHtml(repo.owner)}/${escapeHtml(repo.name)}</dd>
+        </div>
+        <div>
+          <dt>Permission</dt>
+          <dd>Contents: Read and write</dd>
+        </div>
+        <div>
+          <dt>After creating it</dt>
+          <dd>Copy the token once, paste it below, then sign in. This browser will remember it.</dd>
+        </div>
+      </dl>
+    </div>
   `;
 }
 

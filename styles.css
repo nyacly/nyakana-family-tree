@@ -510,7 +510,8 @@ button {
 
 .saved-token-note,
 .relationship-guide,
-.linked-person-shortcut {
+.linked-person-shortcut,
+.token-help-card {
   padding: 14px 16px;
   border: 1px solid rgba(32, 54, 45, 0.12);
   border-radius: 16px;
@@ -557,6 +558,43 @@ button {
 
 .relationship-guide p {
   margin: 0;
+}
+
+.token-help-card {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 18px;
+  background: rgba(32, 54, 45, 0.05);
+}
+
+.token-help-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.token-help-card p,
+.token-help-card dl,
+.token-help-card dd {
+  margin: 0;
+}
+
+.token-help-card dl {
+  display: grid;
+  gap: 8px;
+}
+
+.token-help-card dt {
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.token-help-link {
+  width: fit-content;
+  color: var(--ink);
+  font-weight: 800;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
 }
 
 .linked-person-shortcut {

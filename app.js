@@ -418,6 +418,7 @@ function renderOnlinePersonForm(record, payload, options) {
         ${renderOnlineRelationshipSelect("Partners", "spouseIds", relationships.spouseIds, records, record.id)}
       </div>
       ${renderOnlineRelationshipSelect("Children", "childIds", relationships.childIds, records, record.id)}
+      ${renderLinkedPersonShortcut(record, records)}
       <button class="hero-link" type="submit" ${state.stewardSaving ? "disabled" : ""}>${state.stewardSaving ? "Publishing..." : escapeHtml(options.submitLabel)}</button>
     </form>
   `;
@@ -508,6 +509,47 @@ function renderSingleRecordSelect(label, name, records) {
   `;
 }
 
+function renderLinkedPersonShortcut(record, records) {
+  return `
+    <section class="linked-person-shortcut">
+      <div>
+        <p class="eyebrow">Optional shortcut</p>
+        <h3>Add someone new and connect them to ${escapeHtml(record.name)}</h3>
+        <p>If the person is not in the list yet, create them here while saving this record.</p>
+      </div>
+      <div class="form-two-up">
+        <label>
+          <span>New person's name</span>
+          <input type="text" name="linkedPersonName" placeholder="Example: Sarah Nyakana" />
+        </label>
+        <label>
+          <span>Relationship to ${escapeHtml(record.name)}</span>
+          <select name="linkedRelationshipType" data-linked-relationship-type>
+            <option value="">Do not add a new linked person</option>
+            <option value="partner">Spouse / partner</option>
+            <option value="child">Child</option>
+            <option value="parent">Parent</option>
+            <option value="sibling">Sibling</option>
+          </select>
+        </label>
+      </div>
+      <div class="form-two-up">
+        <label>
+          <span>Life facts</span>
+          <input type="text" name="linkedPersonLifeSpan" placeholder="Born 1994" />
+        </label>
+        <label>
+          <span>Location</span>
+          <input type="text" name="linkedPersonLocation" placeholder="Kampala, Uganda" />
+        </label>
+      </div>
+      <div class="linked-child-only is-hidden" data-linked-child-field>
+        ${renderSingleRecordSelect("Other parent, if adding a child", "linkedSecondParentId", records.filter((candidate) => candidate.id !== record.id))}
+      </div>
+    </section>
+  `;
+}
+
 function bindStewardStudioEvents(payload) {
   document.querySelector("#steward-logout-button")?.addEventListener("click", () => {
     state.steward = null;
@@ -528,6 +570,10 @@ function bindStewardStudioEvents(payload) {
     document.querySelectorAll("[data-relationship-section]").forEach((section) => {
       section.classList.toggle("is-hidden", section.dataset.relationshipSection !== event.currentTarget.value);
     });
+  });
+
+  document.querySelector("[data-linked-relationship-type]")?.addEventListener("change", (event) => {
+    document.querySelector("[data-linked-child-field]")?.classList.toggle("is-hidden", event.currentTarget.value !== "child");
   });
 
   document.querySelector("#steward-search-input")?.addEventListener("input", (event) => {
@@ -590,6 +636,11 @@ async function saveOnlinePerson(payload, form) {
       nextPayload.records.push(person);
     }
 
+    const linkedPerson = buildLinkedPersonForAnchor(person, formData, nextPayload.records);
+    if (linkedPerson) {
+      nextPayload.records.push(linkedPerson);
+    }
+
     normalizePublishedRelationships(nextPayload.records);
     nextPayload.records.sort((left, right) => left.name.localeCompare(right.name));
     nextPayload.generatedAt = new Date().toISOString();
@@ -598,9 +649,11 @@ async function saveOnlinePerson(payload, form) {
     await publishPayloadToGithub(nextPayload, person);
     state.payload = nextPayload;
     state.unlockedPayload = nextPayload;
-    state.stewardSelectedId = person.id;
-    state.stewardSearch = person.name;
-    state.stewardMessage = `${person.name} was published to the online tree. GitHub Pages may take a minute to refresh.`;
+    state.stewardSelectedId = linkedPerson?.id || person.id;
+    state.stewardSearch = linkedPerson?.name || person.name;
+    state.stewardMessage = linkedPerson
+      ? `${person.name} and ${linkedPerson.name} were published to the online tree. GitHub Pages may take a minute to refresh.`
+      : `${person.name} was published to the online tree. GitHub Pages may take a minute to refresh.`;
   } catch (error) {
     state.stewardError = error.message || "The record could not be published.";
   } finally {
@@ -634,6 +687,52 @@ function applyGuidedRelationship(person, formData, records) {
     const sibling = recordMap.get(formData.get("siblingId")?.toString() || "");
     person.relationships.parentIds = sibling?.relationships?.parentIds ? [...sibling.relationships.parentIds] : [];
   }
+}
+
+function buildLinkedPersonForAnchor(anchor, formData, records) {
+  const linkedName = formData.get("linkedPersonName")?.toString().trim() || "";
+  const relationshipType = formData.get("linkedRelationshipType")?.toString() || "";
+  if (!linkedName && !relationshipType) {
+    return null;
+  }
+  if (!linkedName || !relationshipType) {
+    throw new Error("To add someone new from this record, enter their name and choose how they are related.");
+  }
+
+  const recordMap = new Map(records.map((record) => [record.id, record]));
+  const secondParentId = formData.get("linkedSecondParentId")?.toString() || "";
+  const linkedPersonId = `person_${window.crypto.randomUUID().slice(0, 10)}`;
+  const parentIds = relationshipType === "child" ? [anchor.id, secondParentId].filter((id) => id && recordMap.has(id)) : [];
+  const spouseIds = relationshipType === "partner" ? [anchor.id] : [];
+  const siblingParents = relationshipType === "sibling" ? anchor.relationships?.parentIds || [] : [];
+  if (relationshipType === "parent") {
+    anchor.relationships.parentIds = unique([...(anchor.relationships.parentIds || []), linkedPersonId]);
+  }
+
+  const relationshipLabels = {
+    partner: `Partner of ${anchor.name}`,
+    child: `Child of ${anchor.name}`,
+    parent: `Parent of ${anchor.name}`,
+    sibling: `Sibling of ${anchor.name}`,
+  };
+
+  return {
+    id: linkedPersonId,
+    name: linkedName,
+    lifeSpan: formData.get("linkedPersonLifeSpan")?.toString().trim() || "Dates not yet captured",
+    location: formData.get("linkedPersonLocation")?.toString().trim() || "",
+    branch: relationshipLabels[relationshipType] || "Family branch",
+    summary: `${relationshipLabels[relationshipType] || "Connected"} in the Nyakana family tree.`,
+    isDeceased: false,
+    isPatriarch: false,
+    visibility: anchor.visibility || "family-open",
+    relationships: {
+      parentIds: relationshipType === "sibling" ? [...siblingParents] : parentIds,
+      spouseIds,
+      childIds: [],
+      siblingIds: [],
+    },
+  };
 }
 
 async function publishPayloadToGithub(payload, person) {

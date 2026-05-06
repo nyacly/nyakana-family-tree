@@ -205,7 +205,7 @@ function renderStewardStudio(payload) {
 
   state.steward = hydrateStoredSteward(state.steward);
 
-  if (!state.steward?.name || !state.steward?.token) {
+  if (!state.steward?.name || (hasPublishingBridge(payload) && !state.steward?.code) || (!hasPublishingBridge(payload) && !state.steward?.token)) {
     renderStewardGate(payload);
     return;
   }
@@ -227,7 +227,7 @@ function renderStewardStudio(payload) {
           <p class="lede">Signed in as ${escapeHtml(state.steward.name)}. Changes publish to GitHub Pages after saving.</p>
           <div class="hero-actions">
             <a class="hero-link hero-link-secondary" href="${escapeHtml(APP_BASE_URL.href)}">View tree</a>
-            <button class="hero-link hero-link-ghost" id="reset-publishing-token-button" type="button">Reset token</button>
+            ${hasPublishingBridge(payload) ? "" : `<button class="hero-link hero-link-ghost" id="reset-publishing-token-button" type="button">Reset token</button>`}
             <button class="hero-link hero-link-ghost" id="steward-logout-button" type="button">Sign out</button>
           </div>
         </div>
@@ -277,7 +277,7 @@ function renderStewardGate(payload) {
         <div class="hero-copy">
           <p class="eyebrow">Steward Studio</p>
           <h1>Open the editing studio</h1>
-          <p class="lede">Use your steward code and publishing token to update the online tree.</p>
+          <p class="lede">${hasPublishingBridge(payload) ? "Use your steward code to update the online tree." : "Use your steward code and publishing token to update the online tree."}</p>
         </div>
       </header>
 
@@ -321,6 +321,20 @@ function renderStewardGate(payload) {
       return;
     }
 
+    if (hasPublishingBridge(payload)) {
+      try {
+        await validatePublishingBridge(payload, name, code);
+        state.steward = { name, code };
+        state.stewardError = "";
+        window.localStorage.setItem(STEWARD_STORAGE_KEY, JSON.stringify(state.steward));
+        renderStewardStudio(payload);
+      } catch (error) {
+        state.stewardError = error.message || "The family publishing bridge could not be reached.";
+        renderStewardGate(payload);
+      }
+      return;
+    }
+
     if (!token) {
       state.stewardError = "This device needs a publishing token once before it can save changes.";
       renderStewardGate(payload);
@@ -342,6 +356,10 @@ function renderStewardGate(payload) {
 }
 
 function renderPublishingTokenField() {
+  if (state.payload && hasPublishingBridge(state.payload)) {
+    return "";
+  }
+
   if (loadStoredPublishingToken()) {
     return `
       <div class="saved-token-note">
@@ -360,6 +378,15 @@ function renderPublishingTokenField() {
 
 function renderPublishingTokenHelp(payload) {
   const repo = payload.stewardStudio.repo;
+  if (hasPublishingBridge(payload)) {
+    return `
+      <div class="token-help-card">
+        <h3>Publishing is managed for stewards</h3>
+        <p>The family publishing bridge keeps the GitHub token private, so stewards only need their steward name and code.</p>
+      </div>
+    `;
+  }
+
   return `
     <div class="token-help-card">
       <h3>Need a publishing token?</h3>
@@ -768,6 +795,11 @@ function buildLinkedPersonForAnchor(anchor, formData, records) {
 }
 
 async function publishPayloadToGithub(payload, person) {
+  if (hasPublishingBridge(payload)) {
+    await publishPayloadToBridge(payload, person);
+    return;
+  }
+
   const repo = payload.stewardStudio.repo;
   const apiUrl = buildGithubContentUrl(repo);
   const headers = buildGithubHeaders(state.steward.token);
@@ -792,6 +824,41 @@ async function publishPayloadToGithub(payload, person) {
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
     throw new Error(formatGithubTokenError(response.status, body.message || "GitHub did not accept the published tree update."));
+  }
+}
+
+async function publishPayloadToBridge(payload, person) {
+  const response = await fetch(payload.stewardStudio.publishEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({
+      action: "publish",
+      stewardName: state.steward.name,
+      stewardCode: state.steward.code,
+      message: `Update family tree record: ${person.name}`,
+      payload,
+      person: { id: person.id, name: person.name },
+    }),
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok || body.ok === false) {
+    throw new Error(body.error || "The family publishing bridge could not publish the tree.");
+  }
+}
+
+async function validatePublishingBridge(payload, stewardName, stewardCode) {
+  const response = await fetch(payload.stewardStudio.publishEndpoint, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({
+      action: "validate",
+      stewardName,
+      stewardCode,
+    }),
+  });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok || body.ok === false) {
+    throw new Error(body.error || "The family publishing bridge did not accept that steward code.");
   }
 }
 
@@ -828,6 +895,10 @@ function formatGithubTokenError(status, fallbackMessage) {
   }
 
   return fallbackMessage;
+}
+
+function hasPublishingBridge(payload) {
+  return Boolean(payload?.stewardStudio?.publishEndpoint);
 }
 
 function normalizePublishedRelationships(records) {

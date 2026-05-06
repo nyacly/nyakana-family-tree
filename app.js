@@ -326,11 +326,17 @@ function renderStewardGate(payload) {
       return;
     }
 
-    state.steward = { name, token };
-    state.stewardError = "";
-    window.localStorage.setItem(STEWARD_TOKEN_STORAGE_KEY, token);
-    window.localStorage.setItem(STEWARD_STORAGE_KEY, JSON.stringify(state.steward));
-    renderStewardStudio(payload);
+    try {
+      await validatePublishingToken(payload, token);
+      state.steward = { name, token };
+      state.stewardError = "";
+      window.localStorage.setItem(STEWARD_TOKEN_STORAGE_KEY, token);
+      window.localStorage.setItem(STEWARD_STORAGE_KEY, JSON.stringify(state.steward));
+      renderStewardStudio(payload);
+    } catch (error) {
+      state.stewardError = error.message || "The publishing token could not be validated.";
+      renderStewardGate(payload);
+    }
   });
 }
 
@@ -737,17 +743,12 @@ function buildLinkedPersonForAnchor(anchor, formData, records) {
 
 async function publishPayloadToGithub(payload, person) {
   const repo = payload.stewardStudio.repo;
-  const apiUrl = `https://api.github.com/repos/${repo.owner}/${repo.name}/contents/${repo.dataPath}`;
-  const headers = {
-    Accept: "application/vnd.github+json",
-    Authorization: `Bearer ${state.steward.token}`,
-    "Content-Type": "application/json",
-    "X-GitHub-Api-Version": "2022-11-28",
-  };
+  const apiUrl = buildGithubContentUrl(repo);
+  const headers = buildGithubHeaders(state.steward.token);
   const current = await fetch(`${apiUrl}?ref=${encodeURIComponent(repo.branch)}`, { headers }).then(async (response) => {
     const body = await response.json().catch(() => ({}));
     if (!response.ok) {
-      throw new Error(body.message || "Could not read the current published tree from GitHub.");
+      throw new Error(formatGithubTokenError(response.status, body.message || "Could not read the current published tree from GitHub."));
     }
     return body;
   });
@@ -764,8 +765,43 @@ async function publishPayloadToGithub(payload, person) {
   });
   const body = await response.json().catch(() => ({}));
   if (!response.ok) {
-    throw new Error(body.message || "GitHub did not accept the published tree update.");
+    throw new Error(formatGithubTokenError(response.status, body.message || "GitHub did not accept the published tree update."));
   }
+}
+
+async function validatePublishingToken(payload, token) {
+  const repo = payload.stewardStudio.repo;
+  const apiUrl = buildGithubContentUrl(repo);
+  const response = await fetch(`${apiUrl}?ref=${encodeURIComponent(repo.branch)}`, { headers: buildGithubHeaders(token) });
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(formatGithubTokenError(response.status, body.message || "The publishing token could not read the tree file."));
+  }
+}
+
+function buildGithubContentUrl(repo) {
+  return `https://api.github.com/repos/${repo.owner}/${repo.name}/contents/${repo.dataPath}`;
+}
+
+function buildGithubHeaders(token) {
+  return {
+    Accept: "application/vnd.github+json",
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+}
+
+function formatGithubTokenError(status, fallbackMessage) {
+  if (status === 401) {
+    return "GitHub rejected the saved publishing token. Use Reset token, then sign in again with a fresh GitHub token that has Contents read/write access to nyacly/nyakana-family-tree.";
+  }
+
+  if (status === 403) {
+    return "GitHub accepted the token but it does not have permission to publish this tree. Create or update the token with Contents read/write access to nyacly/nyakana-family-tree.";
+  }
+
+  return fallbackMessage;
 }
 
 function normalizePublishedRelationships(records) {

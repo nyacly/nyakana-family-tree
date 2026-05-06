@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-06T10:44:19.229Z",
+  "generatedAt": "2026-05-06T10:45:42.960Z",
   "site": {
     "title": "Nyakana Family Tree",
     "eyebrow": "Family tree",
@@ -15,7 +15,7 @@
   "publication": {
     "mode": "family-open",
     "sourceGeneratedAt": "2026-05-06T10:35:50.276Z",
-    "visibleRecordCount": 42,
+    "visibleRecordCount": 43,
     "featuredRecordId": "i500003",
     "defaultSelectedId": "i500003"
   },
@@ -141,7 +141,8 @@
           "person_06c15019-2"
         ],
         "childIds": [
-          "person_85ab5c9f-9"
+          "person_85ab5c9f-9",
+          "person_f6af5c38-8"
         ],
         "siblingIds": [
           "i500001",
@@ -220,7 +221,9 @@
         ],
         "spouseIds": [],
         "childIds": [],
-        "siblingIds": []
+        "siblingIds": [
+          "person_f6af5c38-8"
+        ]
       }
     },
     {
@@ -920,7 +923,8 @@
           "i500038"
         ],
         "childIds": [
-          "person_85ab5c9f-9"
+          "person_85ab5c9f-9",
+          "person_f6af5c38-8"
         ],
         "siblingIds": []
       }
@@ -979,6 +983,28 @@
           "i500038",
           "i500039",
           "i500040"
+        ]
+      }
+    },
+    {
+      "id": "person_f6af5c38-8",
+      "name": "Serena Marunga Nyakana",
+      "lifeSpan": "Born 2019",
+      "location": "Brisbane, Australia",
+      "branch": "Family branch",
+      "summary": "",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [
+          "i500038",
+          "person_06c15019-2"
+        ],
+        "spouseIds": [],
+        "childIds": [],
+        "siblingIds": [
+          "person_85ab5c9f-9"
         ]
       }
     },

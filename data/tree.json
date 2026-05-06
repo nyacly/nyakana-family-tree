@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-06T10:35:50.409Z",
+  "generatedAt": "2026-05-06T10:41:48.215Z",
   "site": {
     "title": "Nyakana Family Tree",
     "eyebrow": "Family tree",
@@ -15,7 +15,7 @@
   "publication": {
     "mode": "family-open",
     "sourceGeneratedAt": "2026-05-06T10:35:50.276Z",
-    "visibleRecordCount": 40,
+    "visibleRecordCount": 41,
     "featuredRecordId": "i500003",
     "defaultSelectedId": "i500003"
   },
@@ -105,28 +105,28 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
+          "i500002",
           "i500020",
-          "i500002"
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ]
       }
     },
     {
       "id": "i500038",
       "name": "Clayton Nyakana",
-      "lifeSpan": "Dates not yet captured",
-      "location": "",
+      "lifeSpan": "Born 1983",
+      "location": "Uganda",
       "branch": "Child of Margaret and Erastus Nyakana",
       "summary": "Child of Margaret and Erastus Nyakana.",
       "isDeceased": false,
@@ -134,12 +134,19 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500037",
-          "i500003"
+          "i500003",
+          "i500037"
         ],
-        "spouseIds": [],
+        "spouseIds": [
+          "person_06c15019-2"
+        ],
         "childIds": [],
         "siblingIds": [
+          "i500001",
+          "i500010",
+          "i500011",
+          "i500012",
+          "i500013",
           "i500039",
           "i500040"
         ]
@@ -157,20 +164,20 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500023",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500025",
+          "i500026"
         ]
       }
     },
@@ -231,8 +238,8 @@
           "i500013"
         ],
         "childIds": [
-          "i500018",
-          "i500017"
+          "i500017",
+          "i500018"
         ],
         "siblingIds": []
       }
@@ -296,11 +303,11 @@
           "i500037"
         ],
         "childIds": [
-          "i500013",
           "i500001",
-          "i500012",
-          "i500011",
           "i500010",
+          "i500011",
+          "i500012",
+          "i500013",
           "i500038",
           "i500039",
           "i500040"
@@ -320,28 +327,28 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [
           "i500003"
         ],
         "childIds": [
-          "i500013",
           "i500001",
-          "i500012",
+          "i500010",
           "i500011",
-          "i500010"
+          "i500012",
+          "i500013"
         ],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
+          "i500019",
           "i500020",
-          "i500019"
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ]
       }
     },
@@ -384,15 +391,15 @@
           "i500004"
         ],
         "childIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ],
         "siblingIds": []
       }
@@ -432,16 +439,19 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500003",
-          "i500002"
+          "i500002",
+          "i500003"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500013",
           "i500001",
+          "i500010",
           "i500012",
-          "i500010"
+          "i500013",
+          "i500038",
+          "i500039",
+          "i500040"
         ]
       }
     },
@@ -457,8 +467,8 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [
           "i500027"
@@ -469,14 +479,14 @@
           "i500030"
         ],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ]
       }
     },
@@ -492,8 +502,8 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [
           "i500031"
@@ -504,14 +514,14 @@
           "i500034"
         ],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ]
       }
     },
@@ -594,20 +604,20 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025"
         ]
       }
     },
@@ -669,16 +679,19 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500003",
-          "i500002"
+          "i500002",
+          "i500003"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500013",
           "i500001",
+          "i500011",
           "i500012",
-          "i500011"
+          "i500013",
+          "i500038",
+          "i500039",
+          "i500040"
         ]
       }
     },
@@ -694,20 +707,20 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500022",
+          "i500024",
+          "i500025",
+          "i500026"
         ]
       }
     },
@@ -773,15 +786,15 @@
           "i500005"
         ],
         "childIds": [
-          "i500026",
-          "i500022",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ],
         "siblingIds": []
       }
@@ -798,12 +811,17 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500037",
-          "i500003"
+          "i500003",
+          "i500037"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
+          "i500001",
+          "i500010",
+          "i500011",
+          "i500012",
+          "i500013",
           "i500038",
           "i500039"
         ]
@@ -821,8 +839,8 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500003",
-          "i500002"
+          "i500002",
+          "i500003"
         ],
         "spouseIds": [
           "i500014"
@@ -831,10 +849,13 @@
           "i500015"
         ],
         "siblingIds": [
-          "i500013",
           "i500001",
+          "i500010",
           "i500011",
-          "i500010"
+          "i500013",
+          "i500038",
+          "i500039",
+          "i500040"
         ]
       }
     },
@@ -859,6 +880,25 @@
           "i500033",
           "i500034"
         ]
+      }
+    },
+    {
+      "id": "person_06c15019-2",
+      "name": "Phiona Ihunde Nyakana",
+      "lifeSpan": "Dates not yet captured",
+      "location": "Uganda",
+      "branch": "Partner of Clayton Nyakana",
+      "summary": "Partner of Clayton Nyakana in the Nyakana family tree.",
+      "isDeceased": false,
+      "isPatriarch": false,
+      "visibility": "family-open",
+      "relationships": {
+        "parentIds": [],
+        "spouseIds": [
+          "i500038"
+        ],
+        "childIds": [],
+        "siblingIds": []
       }
     },
     {
@@ -896,8 +936,8 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500003",
-          "i500002"
+          "i500002",
+          "i500003"
         ],
         "spouseIds": [
           "i500006"
@@ -908,10 +948,13 @@
           "i500009"
         ],
         "siblingIds": [
-          "i500013",
-          "i500012",
+          "i500010",
           "i500011",
-          "i500010"
+          "i500012",
+          "i500013",
+          "i500038",
+          "i500039",
+          "i500040"
         ]
       }
     },
@@ -927,8 +970,8 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [
           "i500035"
@@ -937,14 +980,14 @@
           "i500036"
         ],
         "siblingIds": [
-          "i500026",
-          "i500022",
-          "i500024",
-          "i500023",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500022",
+          "i500023",
+          "i500024",
+          "i500026"
         ]
       }
     },
@@ -960,20 +1003,20 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500005",
-          "i500004"
+          "i500004",
+          "i500005"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
-          "i500026",
-          "i500025",
-          "i500024",
-          "i500023",
-          "i500021",
-          "i500020",
+          "i500002",
           "i500019",
-          "i500002"
+          "i500020",
+          "i500021",
+          "i500023",
+          "i500024",
+          "i500025",
+          "i500026"
         ]
       }
     },
@@ -1034,12 +1077,17 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500037",
-          "i500003"
+          "i500003",
+          "i500037"
         ],
         "spouseIds": [],
         "childIds": [],
         "siblingIds": [
+          "i500001",
+          "i500010",
+          "i500011",
+          "i500012",
+          "i500013",
           "i500038",
           "i500040"
         ]
@@ -1057,21 +1105,24 @@
       "visibility": "family-open",
       "relationships": {
         "parentIds": [
-          "i500003",
-          "i500002"
+          "i500002",
+          "i500003"
         ],
         "spouseIds": [
           "i500016"
         ],
         "childIds": [
-          "i500018",
-          "i500017"
+          "i500017",
+          "i500018"
         ],
         "siblingIds": [
           "i500001",
-          "i500012",
+          "i500010",
           "i500011",
-          "i500010"
+          "i500012",
+          "i500038",
+          "i500039",
+          "i500040"
         ]
       }
     }
